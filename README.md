@@ -4,7 +4,9 @@ Simple battleship game in Java.
 Guideline:
 
 ```
-  . Sort out methods() 
+  . Sort out classes
+  . Sort out methods() for each class
+  . Determine who needs to work with who
   . Sort out attributes for each method
   . RDD analyse and CRC cards
   . Create the class diagram
