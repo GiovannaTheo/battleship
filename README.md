@@ -8,12 +8,13 @@ Guideline:
   - Grid
   - Boat (which generalizes the three classes aircraft carrier, torpedo boat and cruiser)
   - GameState
+  - Orientation
 - Sort out methods() for each class
   - Player:
       - player()
       - selectBoat(input): Boat
       - placeBoat(Boat: boat, coord: (x,y), orientation: String)
-      - receivedAttack(int: x, int: y)
+      - receiveAttack(int: x, int: y)
   - Grid
   - Boat
       - boat() 
@@ -28,6 +29,11 @@ Guideline:
       - length: int
       - hitpoints: int  
   - GameState
+  - Orientation
+    - left
+    - right
+    - up
+    - down
  
 - RDD analyse and CRC cards
 
