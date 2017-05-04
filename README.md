@@ -4,38 +4,31 @@ Simple battleship game in Java.
 Guideline:
 
 - Sort out classes
-  - player
-  - grid
-  - boat (which generalizes the three classes aircraft carrier, torpedo boat and cruiser)
-  - gameState
-  
- - Sort out methods() for each class
-  - player:
+  - Player
+  - Grid
+  - Boat (which generalizes the three classes aircraft carrier, torpedo boat and cruiser)
+  - GameState
+- Sort out methods() for each class
+  - Player:
       - player()
       - selectBoat(input): Boat
       - placeBoat(Boat: boat, coord: (x,y), orientation: String)
       - receivedAttack(int: x, int: y)
-  - grid
-  - boat
+  - Grid
+  - Boat
       - boat() 
-  - gameState
-  
+  - GameState 
 - Determine who needs to work with who
-
 - Sort out attributes for each class
-
-  - player: 
+  - Player: 
       - board: Grid
-      - boats: Boat[]
-      
-  - grid
-  
-  - boat
+      - boats: Boat[]  
+  - Grid
+  - Boat
       - length: int
-      - hitpoints: int
-      
-  - gameState
-  
+      - hitpoints: int  
+  - GameState
+ 
 - RDD analyse and CRC cards
 
 - Create the class diagram
