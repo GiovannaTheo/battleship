@@ -5,6 +5,10 @@ Guideline:
 
 ```
   . Sort out classes
+      - player
+      - grid
+      - boat (which generalizes the three classes aircraft carrier, torpedo boat and cruiser)
+      - gameState
   . Sort out methods() for each class
   . Determine who needs to work with who
   . Sort out attributes for each method
