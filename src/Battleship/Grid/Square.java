@@ -10,6 +10,6 @@ public class Square {
     Boolean hasBoat;
     Boolean isDown;
 
-    
+
 
 }
