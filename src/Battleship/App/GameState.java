@@ -38,12 +38,8 @@ public class GameState {
         this.round += 1;
     }
 
-    public Boolean hasUserLost(){
-        if isUserTurn == true && Player.getBoats().length == 0 { //If there isn't any boat left in user's list then he loses
-            return true;
-        } else {
-            return false;
-        }
+    public Boolean hasUserLost(Player user) {
+        return user.getBoats().isEmpty(); //If there isn't any boat left in user's list then he loses
     }
 
     public void start(){
@@ -52,7 +48,6 @@ public class GameState {
 
     public void end(){
         //TODO: display a losing message
-        break;
     }
 
     public void abandon(){
