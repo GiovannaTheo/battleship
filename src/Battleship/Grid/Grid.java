@@ -5,5 +5,5 @@ package Battleship.Grid;
  */
 public abstract class Grid {
 
-    
+    private
 }

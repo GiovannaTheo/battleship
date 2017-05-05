@@ -5,10 +5,10 @@ package Battleship.Grid;
  */
 public class Square {
 
-    Coordinates coord;
-    Boolean isEmpty;
-    Boolean hasBoat;
-    Boolean isMarked;
+    private Coordinates coord;
+    private Boolean isEmpty;
+    private Boolean hasBoat;
+    private Boolean isMarked;
 
     public Square(Coordinates coord) {
         this.coord = coord;
