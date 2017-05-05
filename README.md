@@ -57,11 +57,12 @@ Guideline:
 - RDD analyse and CRC cards
 
 - Create the class diagram
-  - V2 uploaded.
+  - Done.
 
 - Create the sequence diagram (only for non-trivial parts of the game)
+  - Done.
 
 - Create the stateChart diagram (only for non-trivial parts of the game)
-
+  - Done.
 - Implement the code
   
