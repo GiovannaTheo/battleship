@@ -22,9 +22,6 @@ public abstract class Boat {
         this.setHitpoints(this.getHitpoints()-1);
     }
 
-    public abstract int getLength();
-
-
     /*
     Getters and setters
      */

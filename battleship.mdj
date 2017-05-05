@@ -5246,7 +5246,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-isDown: bool",
+											"text": "-isMarked: bool",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -5301,7 +5301,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+getIsDown(): bool",
+											"text": "+getIsMarked(): bool",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -5330,7 +5330,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+setIsDown(value: bool)",
+											"text": "+setIsMarked(value: bool)",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -12947,7 +12947,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFb1O2t2mrX5n8="
 							},
-							"name": "isDown",
+							"name": "isMarked",
 							"visibility": "private",
 							"isStatic": false,
 							"isLeaf": false,
@@ -12967,7 +12967,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFb1O2t2mrX5n8="
 							},
-							"name": "getIsDown",
+							"name": "getIsMarked",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
@@ -12998,7 +12998,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFb1O2t2mrX5n8="
 							},
-							"name": "setIsDown",
+							"name": "setIsMarked",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,
