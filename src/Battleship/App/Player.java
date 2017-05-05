@@ -5,6 +5,7 @@ import Battleship.Grid.Coordinates;
 import Battleship.Grid.OpponentGrid;
 import Battleship.Grid.UserGrid;
 import Battleship.Boats.Boat;
+import jdk.nashorn.internal.objects.annotations.Constructor;
 
 import java.util.HashMap;
 
@@ -13,16 +14,42 @@ import java.util.HashMap;
  */
 public class Player {
 
-    UserGrid userBoard;
+    private UserGrid userBoard;
 
     // String is the name the user will give to his boats
-    HashMap<String, Boat> boats = new HashMap<String, Boat>();
+    private HashMap<String, Boat> boats = new HashMap<String, Boat>();
 
-    OpponentGrid opponentBoard;
+    private OpponentGrid opponentBoard;
 
     /*
-    Getters and setters
-     */
+        Methods
+    */
+
+    public Player() {
+        //TODO
+    }
+
+    public Boat selectBoat() {
+        // TODO
+        return null;
+    }
+
+    public void placeBoat(Boat boat, Coordinates coord, Orientation orientation) {
+        // TODO
+    }
+
+    public void receiveAttack(Coordinates coord) {
+        // TODO
+    }
+
+    public void targetSquare(Coordinates coord) {
+        // TODO
+    }
+
+
+    /*
+        Getters and setters
+    */
     public UserGrid getUserBoard() {
         return userBoard;
     }
@@ -47,29 +74,5 @@ public class Player {
         this.opponentBoard = opponentBoard;
     }
 
-    /*
-    Methods
-     */
-
-    public void player() {
-        // TODO
-    }
-
-    public Boat selectBoat() {
-        // TODO
-        return null;
-    }
-
-    public void placeBoat(Boat boat, Coordinates coord, Orientation orientation) {
-        // TODO
-    }
-
-    public void receiveAttack(Coordinates coord) {
-        // TODO
-    }
-
-    public void targetSquare(Coordinates coord) {
-        // TODO
-    }
 
 }
