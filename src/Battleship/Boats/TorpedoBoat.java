@@ -6,11 +6,7 @@ package Battleship.Boats;
 public class TorpedoBoat extends Boat {
 
     public TorpedoBoat() {
-        super(this.getLength());
+        super(3);
     }
 
-    @Override
-    public int getLength() {
-        return 3;
-    }
 }

@@ -5,6 +5,7 @@ import Battleship.Grid.Coordinates;
 import Battleship.Grid.OpponentGrid;
 import Battleship.Grid.UserGrid;
 import Battleship.Boats.Boat;
+
 import jdk.nashorn.internal.objects.annotations.Constructor;
 
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 /**
  * Created by arthurdeschamps on 05.05.17.
  */
+
 public class Player {
 
     private UserGrid userBoard;
@@ -50,6 +52,7 @@ public class Player {
     /*
         Getters and setters
     */
+
     public UserGrid getUserBoard() {
         return userBoard;
     }

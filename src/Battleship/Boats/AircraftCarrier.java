@@ -8,12 +8,7 @@ import jdk.nashorn.internal.objects.annotations.Constructor;
 public class AircraftCarrier extends Boat {
 
     public AircraftCarrier() {
-        this.setHitpoints(this.getLength());
+        super(5);
     }
 
-
-    @Override
-    public int getLength() {
-        return 5;
-    }
 }
