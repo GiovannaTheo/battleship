@@ -31,5 +31,8 @@ public abstract class Grid {
         this.squares = squares;
     }
 
+    public Square getSquareByCoordinate(Coordinates coord) {
+        return this.squares[coord.getX()][coord.getY()];
+    }
 
 }
