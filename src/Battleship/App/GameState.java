@@ -42,17 +42,12 @@ public class GameState {
         return user.getBoats().isEmpty(); //If there isn't any boat left in user's list then he loses
     }
 
-    public void start(){
-        //TODO: Launch the game in gui
-    }
-
     public void end(){
         //TODO: display a losing message
     }
 
-    public void abandon(){
-        //TODO: ask for user's confirmation for abandon
-        end();
+    public static void abandon(){
+        System.exit(0); //Quitting game
     }
 
 }
