@@ -14,7 +14,6 @@ public class Main {
 
     }
 
-
     private static void init() {
 
         // Create player
@@ -23,5 +22,6 @@ public class Main {
         // Render main view
         MainView view = new MainView();
         view.render();
+
     }
 }

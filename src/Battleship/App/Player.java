@@ -19,8 +19,8 @@ import java.util.Map;
 
 public class Player {
 
-    private UserGrid userBoard;
-    private OpponentGrid opponentBoard;
+    private UserGrid userGrid;
+    private OpponentGrid opponentGrid;
 
     // Lists of user's boats
     private List<Boat> boats;
@@ -37,8 +37,8 @@ public class Player {
 
         boats = new ArrayList<>();
 
-        this.userBoard = new UserGrid();
-        this.opponentBoard = new OpponentGrid();
+        this.userGrid = new UserGrid();
+        this.opponentGrid = new OpponentGrid();
 
         // Add the five available boats to the user's boats
 
@@ -56,8 +56,9 @@ public class Player {
         // TODO: call this.setSelectedBoat on the mouse selected boat
     }
 
-    public void placeBoat(Boat boat, Coordinates coord, Orientation orientation) {
+    public void placeBoat(Coordinates coord, Orientation orientation) {
         // TODO: place the boat on the gui
+
 
         // Delete boat from boats list
         this.getBoats().remove(selectedBoat);
@@ -75,7 +76,7 @@ public class Player {
     public void receiveAttack(Coordinates coord) {
         // Checks if there is a boat at these coordinates
         try {
-            if(this.getUserBoard().getSquareByCoordinate(coord).hasBoat) {
+            if(this.getuserGrid().getSquareByCoordinate(coord).hasBoat) {
                 // Find the boat that is at coord
                 for (Boat boat : this.getBoats()) {
                     if (boat.isAtCoordinates(coord)) {
@@ -84,7 +85,7 @@ public class Player {
                 }
             }
             // Mark on GUI that square has been shot
-            this.getUserBoard().markSquare(coord);
+            this.getuserGrid().markSquare(coord);
 
         } catch (NullPointerException e) {
             // Potential issue with coordinates
@@ -93,7 +94,7 @@ public class Player {
     }
 
     public void targetSquare(Coordinates coord) {
-        this.getOpponentBoard().markSquare(coord);
+        this.getopponentGrid().markSquare(coord);
     }
 
 
@@ -101,20 +102,20 @@ public class Player {
         Getters and setters
     */
 
-    public UserGrid getUserBoard() {
-        return userBoard;
+    public UserGrid getuserGrid() {
+        return userGrid;
     }
 
-    public void setUserBoard(UserGrid userBoard) {
-        this.userBoard = userBoard;
+    public void setuserGrid(UserGrid userGrid) {
+        this.userGrid = userGrid;
     }
 
-    public OpponentGrid getOpponentBoard() {
-        return opponentBoard;
+    public OpponentGrid getopponentGrid() {
+        return opponentGrid;
     }
 
-    public void setOpponentBoard(OpponentGrid opponentBoard) {
-        this.opponentBoard = opponentBoard;
+    public void setopponentGrid(OpponentGrid opponentGrid) {
+        this.opponentGrid = opponentGrid;
     }
 
     public List<Boat> getBoats() {
