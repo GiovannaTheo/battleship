@@ -9,6 +9,7 @@ import com.sun.istack.internal.Nullable;
 import jdk.nashorn.internal.objects.annotations.Constructor;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class Player {
     private OpponentGrid opponentBoard;
 
     // Lists of user's boats
-    private ArrayList<Boat> boats;
+    private List<Boat> boats;
 
     // Name of selected boat
     @Nullable
@@ -33,10 +34,14 @@ public class Player {
     */
 
     public Player() {
+
+        boats = new ArrayList<>();
+
         this.userBoard = new UserGrid();
         this.opponentBoard = new OpponentGrid();
 
         // Add the five available boats to the user's boats
+
         this.boats.add(new AircraftCarrier());
         this.boats.add(new Cruiser());
         this.boats.add(new Cruiser());
@@ -112,7 +117,7 @@ public class Player {
         this.opponentBoard = opponentBoard;
     }
 
-    public ArrayList<Boat> getBoats() {
+    public List<Boat> getBoats() {
         return boats;
     }
 

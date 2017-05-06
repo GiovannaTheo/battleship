@@ -10,7 +10,10 @@ public abstract class Grid {
     // 2-dimensional array of squares
     private Square[][] squares;
 
+
     public Grid() {
+
+        squares = new Square[10][10];
         // squares init
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
