@@ -39,7 +39,7 @@ public class GameState {
     }
 
     public Boolean hasUserLost(Player user) {
-        return user.getBoats().isEmpty(); //If there isn't any boat left in user's list then he loses
+        return (user.getBoats() == null || user.getBoats().isEmpty()); //If there isn't any boat left in user's list then he loses
     }
 
     public void start(){
