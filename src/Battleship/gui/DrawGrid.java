@@ -6,14 +6,14 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.*;
 
-public class drawGrid extends JPanel {
+public class DrawGrid extends JPanel {
 
         private int columnCount = 10;
-        private int rowCount =10;
+        private int rowCount = 10;
         private java.util.List<Rectangle> cells;
         private Point selectedCell;
 
-        public drawGrid() {
+        public DrawGrid() {
 
             cells = new ArrayList<>(columnCount * rowCount);
             MouseAdapter mouseHandler;

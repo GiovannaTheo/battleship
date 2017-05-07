@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+
+
 public class MainView {
 
     public MainView() {
@@ -25,10 +27,10 @@ public class MainView {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 }
 
-                JFrame frame = new JFrame("Testing");
+                JFrame frame = new JFrame("Bataille navale");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new BorderLayout());
-                frame.add(new drawGrid());
+                frame.add(new DrawGrid());
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
@@ -50,7 +52,14 @@ package Battleship.gui;
         import java.awt.event.*;
 
 
+<<<<<<< HEAD
 
+=======
+
+/** VERSION 2 - BUTTONS */
+
+/**
+>>>>>>> 392ffec2cc2d3be185bb63b55a96d476d2f95015
 public class MainView extends JFrame{
 
 
@@ -117,5 +126,10 @@ public class MainView extends JFrame{
     }
 
 }
+ **/
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 392ffec2cc2d3be185bb63b55a96d476d2f95015

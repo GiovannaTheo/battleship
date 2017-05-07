@@ -1,5 +1,6 @@
 package Battleship.Tests
 
+import Battleship.App.GameState
 import Battleship.App.Player
 
 /**
@@ -14,8 +15,10 @@ import Battleship.Grid.*
 import Battleship.Boats.*
 
 import static groovy.test.GroovyAssert.shouldFail
+import static org.junit.Assert.assertFalse
+import static org.junit.Assert.assertTrue
 
-class MainTest extends GroovyTestCase {
+class AppTest extends GroovyTestCase {
 
     /**
      *
@@ -61,5 +64,18 @@ class MainTest extends GroovyTestCase {
             Coordinates coord = new Coordinates(5,6)
             user.targetSquare(coord)
             assertTrue(user.getopponentGrid().getSquareByCoordinate(coord).hasBeenShot)
+        }
+
+    /**
+     * TESTING GameState
+     */
+
+        @Test
+        void testHasUserLost() {
+            Player user = new Player()
+            GameState gm = new GameState()
+            assertFalse(gm.hasUserLost(user))
+            user.getBoats().clear()
+            assertTrue(gm.hasUserLost(user))
         }
 }
