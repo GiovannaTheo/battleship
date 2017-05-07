@@ -48,13 +48,21 @@ public class MainView extends JFrame{
     }
 
     public class Start extends AbstractAction {
+
+        private int a = 1; //To create only one instance of player
+
         public Start(String texte){
             super(texte);
         }
 
 
         public void actionPerformed(ActionEvent e) {
-            Player user = new Player(); //Start the game by creating a new player
+            if (this.a == 1){
+                Player user = new Player(); //Start the game by creating a new player
+                this.a = 0; //blocks player from clicking multiple times on "start" button and therefore
+                            //creating multiple instances of player.
+            }
+
         }
     }
 
@@ -68,8 +76,8 @@ public class MainView extends JFrame{
         JButton b1 = new JButton(new Start("Start"));
         panel.add(b1, "growx, w " + this.getWidth()/5);
 
-        JLabel oppGrid = new JLabel("Opponent grid should be here");
-        panel.add(oppGrid, "span 2 3 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
+        //Opponent Grid
+        panel.add(new DrawGrid(), "span 2 3 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
 
         JButton b2 = new JButton(new Abandon("Abandon"));
         panel.add(b2, "growx, wrap, w " + this.getWidth()/5);
@@ -77,11 +85,11 @@ public class MainView extends JFrame{
         JLabel boatSelect = new JLabel("Boat orientation select should be here");
         panel.add(boatSelect, "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
 
-        JLabel userGrid = new JLabel("Boat select should be here");
-        panel.add(userGrid, "span 1 2 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
+        JLabel boatOrientation = new JLabel("Boat select should be here");
+        panel.add(boatOrientation, "span 1 2 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
-        JLabel boatOrientation = new JLabel("UserGrid should be here");
-        panel.add(boatOrientation, "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
+        //UserGrid
+        panel.add(new DrawGrid(), "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
         return panel;
     }
