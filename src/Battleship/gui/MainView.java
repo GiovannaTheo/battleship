@@ -1,3 +1,7 @@
+
+
+/** VERSION 2 - BUTTONS */
+
 package Battleship.gui;
 
 /**
@@ -5,19 +9,8 @@ package Battleship.gui;
  */
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -44,10 +37,20 @@ public class MainView {
     }
 }
 
-
-/** VERSION 2 - BUTTONS */
-
 /*
+
+package Battleship.gui;
+
+
+
+        import Battleship.App.*;
+
+        import javax.swing.*;
+        import java.awt.*;
+        import java.awt.event.*;
+
+
+
 public class MainView extends JFrame{
 
 
@@ -66,6 +69,7 @@ public class MainView extends JFrame{
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(button());
+        setVisible(true);
     }
 
 
@@ -114,4 +118,4 @@ public class MainView extends JFrame{
 
 }
 
-*/
+
