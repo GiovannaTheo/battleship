@@ -8,7 +8,9 @@ public class Cruiser extends Boat {
 
     public Cruiser() {
         super(4);
-        this.setImagePath("assets/SeaWarfareSet/Cruiser/ShipCruiserHull.png");
+
+        final String imagePath = "assets/SeaWarfareSet/Cruiser/ShipCruiserHull.png";
+        this.setImagePath(imagePath);
     }
 
 }

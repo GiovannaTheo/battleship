@@ -104,7 +104,7 @@ public class DrawGrid extends JPanel {
                 double y = cell.getY();
                 System.out.println("coord x: " + x + " coord y: " + y);
 
-                if (MainView.hasPlayer == 0) { //If user pressed "Start" then he is allowed to mark the squares
+                if (MainView.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
                     g.fillRect((int) x, (int) y, cellWidth, cellHeight); //Fill it
                 }
             }

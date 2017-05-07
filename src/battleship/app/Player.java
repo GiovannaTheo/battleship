@@ -19,6 +19,9 @@ public class Player {
     private UserGrid userGrid;
     private OpponentGrid opponentGrid;
 
+    // If players is actually in-game
+    public Boolean isPlaying;
+
     // Lists of user's boats
     private List<Boat> boats;
 
@@ -36,6 +39,7 @@ public class Player {
 
         this.userGrid = new UserGrid();
         this.opponentGrid = new OpponentGrid();
+        this.isPlaying = false;
 
         // Add the five available boats to the user's boats
 

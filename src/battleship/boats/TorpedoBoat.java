@@ -7,7 +7,9 @@ public class TorpedoBoat extends Boat {
 
     public TorpedoBoat() {
         super(3);
-        this.setImagePath("assets/SeaWarfareSet/Destroyer/ShipDestroyerHull.png");
+
+        final String imagePath = "assets/SeaWarfareSet/Destroyer/ShipDestroyerHull.png";
+        this.setImagePath(imagePath);
     }
 
 }

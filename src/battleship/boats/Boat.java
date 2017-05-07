@@ -3,6 +3,8 @@ package battleship.boats;
 import battleship.grid.Coordinates;
 import battleship.gui.main.ImageComponent;
 
+import java.awt.*;
+
 /**
  * Created by arthurdeschamps on 05.05.17.
  */
@@ -79,7 +81,10 @@ public abstract class Boat {
 
     // Renders object as boat image
     public ImageComponent getVisualForm() {
-        return new ImageComponent(this.getImagePath());
+        ImageComponent boatImage =  new ImageComponent(this.getImagePath());
+        // To make boats full size
+        //boatImage.setPreferredSize(new Dimension(Integer.MAX_VALUE,Integer.MAX_VALUE));
+        return boatImage;
     }
 
     /*

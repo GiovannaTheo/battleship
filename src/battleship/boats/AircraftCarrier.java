@@ -7,7 +7,9 @@ public class AircraftCarrier extends Boat {
 
     public AircraftCarrier() {
         super(5);
-        this.setImagePath("assets/SeaWarfareSet/Carrier/ShipCarrierHull.png");
+
+        final String imagePath = "assets/SeaWarfareSet/Carrier/ShipCarrierHull.png";
+        this.setImagePath(imagePath);
     }
 
 }

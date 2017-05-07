@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.AbstractAction;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Map;
 
 import battleship.gui.boats.BoatSelector;
 import battleship.gui.main.DrawGrid;
@@ -24,7 +25,7 @@ import net.miginfocom.swing.MigLayout;
 public class MainView extends JFrame {
 
     // Player (to access its grid, squares, boats, etc
-    private Player player;
+    private static Player player;
 
     // Components
     private BoatSelector boatSelector;
@@ -63,11 +64,6 @@ public class MainView extends JFrame {
         }
     }
 
-    //This variable is here to make sure we create only one instance of "player".
-    //It is a public static int because "hasPlayer" is accessed in the class DrawGrid in order to block user from
-    //Marking squares if he hasn't Started the game
-
-    public static int hasPlayer = 1;
 
     public class Start extends AbstractAction {
 
@@ -78,12 +74,8 @@ public class MainView extends JFrame {
         }
 
         public void actionPerformed(ActionEvent e) {
-            if (hasPlayer == 1){
-                 //Start the game by creating a new player
-                hasPlayer = 0; //blocks player from clicking multiple times on "start" button and therefore
-                //creating multiple instances of player.
-            }
-
+            // TODO: init boats view, etc
+            MainView.getPlayer().isPlaying = true;
         }
     }
 
@@ -92,7 +84,7 @@ public class MainView extends JFrame {
     private JPanel mainPanel(){ //Set main panel
 
         JPanel panel = new JPanel();
-        panel.setLayout(new MigLayout("", "[][grow][]"));
+        panel.setLayout(new MigLayout("debug", "[][grow][]"));
 
         JButton b1 = new JButton(new Start("Start"));
         panel.add(b1, "growx, w " + this.getWidth()/5);
@@ -124,7 +116,7 @@ public class MainView extends JFrame {
         this.boatSelector = boatSelector;
     }
 
-    public Player getPlayer() {
+    public static Player getPlayer() {
         return player;
     }
 }
