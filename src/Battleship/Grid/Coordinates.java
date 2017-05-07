@@ -12,8 +12,30 @@ public class Coordinates {
         this.y = y;
     }
 
+
+
     public int getX() {
         return x;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (o == null)
+            return false;
+
+        if (this.getClass() != o.getClass())
+            return false;
+
+        try {
+            Coordinates coord = (Coordinates) o;
+            return (coord.getX() == this.getX() && coord.getY() == this.getY());
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void setX(int x) {

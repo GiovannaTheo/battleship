@@ -2,6 +2,7 @@ package Battleship.Tests
 
 import Battleship.Boats.Cruiser
 import Battleship.Boats.Orientation
+import Battleship.Grid.Coordinates
 import org.junit.Test
 
 /**
@@ -14,7 +15,7 @@ class BoatsTest extends GroovyTestCase {
      */
 
     @Test
-    void testBoatInstantiation() {
+    void testBoat() {
         Cruiser cruis = new Cruiser()
         assertEquals(4, cruis.getLength())
         assertEquals(cruis.getHitpoints(), cruis.getLength())
@@ -22,6 +23,9 @@ class BoatsTest extends GroovyTestCase {
         cruis.setOrientation(Orientation.DOWN)
         cruis.inflictDamage()
         assertEquals(3, cruis.getHitpoints())
+        cruis.setHeadPosition(new Coordinates(4,5))
+        assertTrue(cruis.isAtCoordinates(new Coordinates(4,5)))
+        assertTrue(cruis.isAtCoordinates(new Coordinates(4,7)))
     }
 
 }

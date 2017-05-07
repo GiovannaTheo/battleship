@@ -32,18 +32,18 @@ public abstract class Boat {
     }
 
     public Boolean isAtCoordinates(Coordinates coord) {
-        /*
-        TODO: determine if boat is on the coordinate (with its orientation, headposition and length)
-         */
+        // Verify if boat is out of game
+        if (this.getHeadPosition().getY() < 0 || this.getHeadPosition().getX() < 0)
+            return false;
         // If coord is the boat's head, then the boat is at coord
         Coordinates currentPos = this.getHeadPosition();
-        if (currentPos == coord)
+        if (currentPos.equals(coord))
             return true;
 
         // Check the other "parts" of the boat
         for (int i = 1; i < this.getLength(); i++) {
             currentPos = getNextPosition(currentPos, this.getOrientation());
-            if (currentPos == coord) {
+            if (currentPos.equals(coord)) {
                 return true;
             }
         }
@@ -57,16 +57,16 @@ public abstract class Boat {
     private Coordinates getNextPosition(Coordinates currentPosition, Orientation orientation) {
         switch (orientation) {
             case UP:
-                return new Coordinates(currentPosition.getX()-1, currentPosition.getY());
+                return new Coordinates(currentPosition.getX(), currentPosition.getY()-1);
 
             case DOWN:
-                return new Coordinates(currentPosition.getX()+1,currentPosition.getY());
-
-            case LEFT:
                 return new Coordinates(currentPosition.getX(),currentPosition.getY()+1);
 
+            case LEFT:
+                return new Coordinates(currentPosition.getX()+1,currentPosition.getY());
+
             case RIGHT:
-                return new Coordinates(currentPosition.getX(),currentPosition.getY()-1);
+                return new Coordinates(currentPosition.getX()-1,currentPosition.getY());
 
             default:
                 return currentPosition;
