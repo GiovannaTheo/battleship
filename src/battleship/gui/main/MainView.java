@@ -23,28 +23,27 @@ import net.miginfocom.swing.MigLayout;
 
 public class MainView extends JFrame {
 
+    // Player (to access its grid, squares, boats, etc
+    private Player player;
 
     // Components
     private BoatSelector boatSelector;
 
-    public MainView(){
+    public MainView(Player player){
 
         super("MigLayout Basic");
 
-        // Components initialization
-        this.setBoatSelector(new BoatSelector());
+        this.player = player;
 
+        // Components initialization
+        this.setBoatSelector(new BoatSelector(this.getPlayer()));
 
         setTitle("Battleship - WarZone");
         setSize(1200,800);
         setLocationRelativeTo(null); //Center
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-<<<<<<< HEAD:src/battleship/gui/main/MainView.java
-        setContentPane(getMainView());
-=======
         setContentPane(mainPanel()); //Set panel
->>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java
         setVisible(true);
 
     }
@@ -79,17 +78,10 @@ public class MainView extends JFrame {
         }
 
         public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD:src/battleship/gui/main/MainView.java
-            if (this.a == 1){
-                //Player user = new Player(); //Start the game by creating a new player
-                this.a = 0; //blocks player from clicking multiple times on "start" button and therefore
-                            //creating multiple instances of player.
-=======
             if (hasPlayer == 1){
-                Player user = new Player(); //Start the game by creating a new player
+                 //Start the game by creating a new player
                 hasPlayer = 0; //blocks player from clicking multiple times on "start" button and therefore
                 //creating multiple instances of player.
->>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java
             }
 
         }
@@ -97,11 +89,7 @@ public class MainView extends JFrame {
 
     //Designing the board
 
-<<<<<<< HEAD:src/battleship/gui/main/MainView.java
-    private JPanel getMainView(){ //Set buttons in pannel
-=======
     private JPanel mainPanel(){ //Set main panel
->>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java
 
         JPanel panel = new JPanel();
         panel.setLayout(new MigLayout("", "[][grow][]"));
@@ -127,7 +115,6 @@ public class MainView extends JFrame {
         return panel;
     }
 
-<<<<<<< HEAD:src/battleship/gui/main/MainView.java
 
     public BoatSelector getBoatSelector() {
         return boatSelector;
@@ -136,13 +123,8 @@ public class MainView extends JFrame {
     public void setBoatSelector(BoatSelector boatSelector) {
         this.boatSelector = boatSelector;
     }
+
+    public Player getPlayer() {
+        return player;
+    }
 }
-
-
-
-
-
-
-=======
-}
->>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java

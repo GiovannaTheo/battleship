@@ -6,8 +6,10 @@ package battleship.app;
 
 import battleship.gui.main.MainView;
 
-public class Main {
+import java.util.logging.Logger;
 
+public class Main {
+    
     public static void main(String args[]) {
 
         init();
@@ -16,8 +18,11 @@ public class Main {
 
     private static void init() {
 
+        // Init player
+        Player player = new Player();
+
         // Render main view
-        MainView view = new MainView();
+        MainView view = new MainView(player);
 
     }
 }

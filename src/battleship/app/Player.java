@@ -14,75 +14,75 @@ import java.util.List;
  * Created by arthurdeschamps on 05.05.17.
  */
 
-public final class Player {
+public class Player {
 
-    private static UserGrid userGrid;
-    private static OpponentGrid opponentGrid;
+    private UserGrid userGrid;
+    private OpponentGrid opponentGrid;
 
     // Lists of user's boats
-    private static List<Boat> boats;
+    private List<Boat> boats;
 
     // Name of selected boat
     @Nullable
-    private static Boat selectedBoat;
+    private Boat selectedBoat;
 
     /*
         Methods
     */
 
-    private Player() {
+    public Player() {
 
         boats = new ArrayList<>();
 
-        Player.userGrid = new UserGrid();
-        Player.opponentGrid = new OpponentGrid();
+        this.userGrid = new UserGrid();
+        this.opponentGrid = new OpponentGrid();
 
         // Add the five available boats to the user's boats
 
-        Player.boats.add(new AircraftCarrier());
-        Player.boats.add(new Cruiser());
-        Player.boats.add(new Cruiser());
-        Player.boats.add(new TorpedoBoat());
-        Player.boats.add(new TorpedoBoat());
+        this.boats.add(new AircraftCarrier());
+        this.boats.add(new Cruiser());
+        this.boats.add(new Cruiser());
+        this.boats.add(new TorpedoBoat());
+        this.boats.add(new TorpedoBoat());
 
         // Default selected boat (selected by the actual user)
-        Player.selectedBoat = Player.getBoats().get(0);
+        this.selectedBoat = this.getBoats().get(0);
     }
 
-    public static void selectBoat() {
-        // TODO: call Player.setSelectedBoat on the mouse selected boat
+    public void selectBoat() {
+        // TODO: call this.setSelectedBoat on the mouse selected boat
     }
 
-    public static void placeBoat(Coordinates coord, Orientation orientation) {
+    public void placeBoat(Coordinates coord, Orientation orientation) {
         // TODO: place the boat on the gui
 
 
         // Delete boat from boats list
-        Player.getBoats().remove(selectedBoat);
+        this.getBoats().remove(selectedBoat);
 
         // When boat is placed, selectedBoat becomes either the
         // first boat in the list, or null
-        if (Player.getBoats().isEmpty()) {
-            Player.setSelectedBoat(null);
+        if (this.getBoats().isEmpty()) {
+            this.setSelectedBoat(null);
         } else {
-            Player.setSelectedBoat(Player.getBoats().get(0));
+            this.setSelectedBoat(this.getBoats().get(0));
         }
 
     }
 
-    public static void receiveAttack(Coordinates coord) {
+    public void receiveAttack(Coordinates coord) {
         // Checks if there is a boat at these coordinates
         try {
-            if(Player.getuserGrid().getSquareByCoordinate(coord).hasBoat) {
+            if(this.getuserGrid().getSquareByCoordinate(coord).hasBoat) {
                 // Find the boat that is at coord
-                for (Boat boat : Player.getBoats()) {
+                for (Boat boat : this.getBoats()) {
                     if (boat.isAtCoordinates(coord)) {
                         boat.inflictDamage();
                     }
                 }
             }
             // Mark on GUI that square has been shot
-            Player.getuserGrid().markSquare(coord);
+            this.getuserGrid().markSquare(coord);
 
         } catch (NullPointerException e) {
             // Potential issue with coordinates
@@ -90,8 +90,8 @@ public final class Player {
         }
     }
 
-    public static void targetSquare(Coordinates coord) {
-        Player.getopponentGrid().markSquare(coord);
+    public void targetSquare(Coordinates coord) {
+        this.getopponentGrid().markSquare(coord);
     }
 
 
@@ -99,35 +99,35 @@ public final class Player {
         Getters and setters
     */
 
-    public static UserGrid getuserGrid() {
+    public UserGrid getuserGrid() {
         return userGrid;
     }
 
-    public static void setuserGrid(UserGrid userGrid) {
-        Player.userGrid = userGrid;
+    public void setuserGrid(UserGrid userGrid) {
+        this.userGrid = userGrid;
     }
 
-    public static OpponentGrid getopponentGrid() {
+    public OpponentGrid getopponentGrid() {
         return opponentGrid;
     }
 
-    public static void setopponentGrid(OpponentGrid opponentGrid) {
-        Player.opponentGrid = opponentGrid;
+    public void setopponentGrid(OpponentGrid opponentGrid) {
+        this.opponentGrid = opponentGrid;
     }
 
-    public static List<Boat> getBoats() {
+    public List<Boat> getBoats() {
         return boats;
     }
 
-    public static void setBoats(ArrayList<Boat> boats) {
-        Player.boats = boats;
+    public void setBoats(ArrayList<Boat> boats) {
+        this.boats = boats;
     }
 
-    public static Boat getSelectedBoat() {
+    public Boat getSelectedBoat() {
         return selectedBoat;
     }
 
-    public static void setSelectedBoat(Boat selectedBoat) {
-        Player.selectedBoat = selectedBoat;
+    public void setSelectedBoat(Boat selectedBoat) {
+        this.selectedBoat = selectedBoat;
     }
 }

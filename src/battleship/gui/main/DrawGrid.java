@@ -15,12 +15,8 @@ public class DrawGrid extends JPanel {
         private java.util.List<Rectangle> cells;
         private Point selectedCell; //Selected cell that needs to be filled
 
-<<<<<<< HEAD:src/battleship/gui/main/DrawGrid.java
 
         public DrawGrid() {
-=======
-        public DrawGrid()  {
->>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/DrawGrid.java
 
 
             cells = new ArrayList<>(columnCount * rowCount);

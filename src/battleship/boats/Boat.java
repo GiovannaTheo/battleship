@@ -78,7 +78,7 @@ public abstract class Boat {
     }
 
     // Renders object as boat image
-    public ImageComponent render() {
+    public ImageComponent getVisualForm() {
         return new ImageComponent(this.getImagePath());
     }
 
