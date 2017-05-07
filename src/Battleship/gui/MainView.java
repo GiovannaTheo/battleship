@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+
+
 public class MainView {
 
     public MainView() {
@@ -32,10 +34,10 @@ public class MainView {
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 }
 
-                JFrame frame = new JFrame("Testing");
+                JFrame frame = new JFrame("Bataille navale");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new BorderLayout());
-                frame.add(new drawGrid());
+                frame.add(new DrawGrid());
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);
@@ -45,9 +47,10 @@ public class MainView {
 }
 
 
+
 /** VERSION 2 - BUTTONS */
 
-/*
+/**
 public class MainView extends JFrame{
 
 
@@ -113,5 +116,6 @@ public class MainView extends JFrame{
     }
 
 }
+ **/
 
-*/
+
