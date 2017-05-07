@@ -1,6 +1,6 @@
 
 
-/** VERSION 2 - BUTTONS */
+//MainView - OK
 
 package battleship.gui.main;
 
@@ -40,7 +40,11 @@ public class MainView extends JFrame {
         setLocationRelativeTo(null); //Center
         setResizable(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+<<<<<<< HEAD:src/battleship/gui/main/MainView.java
         setContentPane(getMainView());
+=======
+        setContentPane(mainPanel()); //Set panel
+>>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java
         setVisible(true);
 
     }
@@ -60,20 +64,32 @@ public class MainView extends JFrame {
         }
     }
 
+    //This variable is here to make sure we create only one instance of "player".
+    //It is a public static int because "hasPlayer" is accessed in the class DrawGrid in order to block user from
+    //Marking squares if he hasn't Started the game
+
+    public static int hasPlayer = 1;
+
     public class Start extends AbstractAction {
 
-        private int a = 1; //To create only one instance of player
+
 
         public Start(String texte){
             super(texte);
         }
 
-
         public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD:src/battleship/gui/main/MainView.java
             if (this.a == 1){
                 //Player user = new Player(); //Start the game by creating a new player
                 this.a = 0; //blocks player from clicking multiple times on "start" button and therefore
                             //creating multiple instances of player.
+=======
+            if (hasPlayer == 1){
+                Player user = new Player(); //Start the game by creating a new player
+                hasPlayer = 0; //blocks player from clicking multiple times on "start" button and therefore
+                //creating multiple instances of player.
+>>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java
             }
 
         }
@@ -81,10 +97,14 @@ public class MainView extends JFrame {
 
     //Designing the board
 
+<<<<<<< HEAD:src/battleship/gui/main/MainView.java
     private JPanel getMainView(){ //Set buttons in pannel
+=======
+    private JPanel mainPanel(){ //Set main panel
+>>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java
 
         JPanel panel = new JPanel();
-        panel.setLayout(new MigLayout("debug, fillx", "[][grow][]"));
+        panel.setLayout(new MigLayout("", "[][grow][]"));
 
         JButton b1 = new JButton(new Start("Start"));
         panel.add(b1, "growx, w " + this.getWidth()/5);
@@ -107,6 +127,7 @@ public class MainView extends JFrame {
         return panel;
     }
 
+<<<<<<< HEAD:src/battleship/gui/main/MainView.java
 
     public BoatSelector getBoatSelector() {
         return boatSelector;
@@ -122,3 +143,6 @@ public class MainView extends JFrame {
 
 
 
+=======
+}
+>>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/MainView.java

@@ -25,7 +25,7 @@ public abstract class Boat {
 
         this.length = length;
 
-        // (-1,-1) means the boat is not yet on positioned on the board
+        // (-1,-1) means the boat is not yet positioned on the board
         this.headPosition = new Coordinates(-1,-1);
 
     }
@@ -57,6 +57,7 @@ public abstract class Boat {
 
     // Returns the position next to the given coordinates, given an orientation
     // (we actually go in the opposite sense of the orientation)
+
     private Coordinates getNextPosition(Coordinates currentPosition, Orientation orientation) {
         switch (orientation) {
             case UP:

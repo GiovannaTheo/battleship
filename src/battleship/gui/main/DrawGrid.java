@@ -5,28 +5,32 @@ import battleship.boats.Boat;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.*;
 
 public class DrawGrid extends JPanel {
 
-        private int columnCount = 10;
+        private int columnCount = 10; //Size of the grid
         private int rowCount = 10;
         private java.util.List<Rectangle> cells;
-        private Point selectedCell;
+        private Point selectedCell; //Selected cell that needs to be filled
 
+<<<<<<< HEAD:src/battleship/gui/main/DrawGrid.java
 
         public DrawGrid() {
+=======
+        public DrawGrid()  {
+>>>>>>> 4f900ba86adea4eb197a5c32e44031cbf56407d4:src/Battleship/gui/DrawGrid.java
 
 
             cells = new ArrayList<>(columnCount * rowCount);
             MouseAdapter mouseHandler;
             mouseHandler = new MouseAdapter() {
 
-                @Override
-                public void mouseMoved(MouseEvent e) {
+                //Redefines handler of event "MouseClicked"
 
-                    Point point = e.getPoint();
+                @Override
+                public void mouseClicked(MouseEvent e) {
 
                     int width = getWidth();
                     int height = getHeight();
@@ -34,7 +38,7 @@ public class DrawGrid extends JPanel {
                     int cellWidth = width / columnCount;
                     int cellHeight = height / rowCount;
 
-                    selectedCell = null;
+                    selectedCell = null; //Init
 
                     if (e.getX() >= ((width - (columnCount * cellWidth)) / 2) && e.getY() >= ((height - (rowCount * cellHeight)) / 2)) {
 
@@ -43,15 +47,19 @@ public class DrawGrid extends JPanel {
 
                         if (column >= 0 && row >= 0 && column < columnCount && row < rowCount) {
 
-                            selectedCell = new Point(column, row);
+                            selectedCell = new Point(column, row); //Mouse is over a certain cell
 
                         }
 
                     }
-                    repaint();
+
+                    Graphics g = getGraphics();
+                    paintComponent(g); //Updates the panel
+
                 }
             };
-            addMouseMotionListener(mouseHandler);
+
+            addMouseListener(mouseHandler); //Puts the handler defined above in the MouseListener
         }
 
         @Override
@@ -68,8 +76,6 @@ public class DrawGrid extends JPanel {
 
         @Override
         protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g.create();
 
             int width = getWidth();
             int height = getHeight();
@@ -80,7 +86,7 @@ public class DrawGrid extends JPanel {
             int xOffset = (width - (columnCount * cellWidth)) / 2;
             int yOffset = (height - (rowCount * cellHeight)) / 2;
 
-            if (cells.isEmpty()) {
+            if (cells.isEmpty()) { //Create a cell that are added to the set cells
                 for (int row = 0; row < rowCount; row++) {
                     for (int col = 0; col < columnCount; col++) {
                         Rectangle cell = new Rectangle(
@@ -93,19 +99,27 @@ public class DrawGrid extends JPanel {
                 }
             }
 
-            if (selectedCell != null) {
+            if (selectedCell != null) { //If we clicked on one cell, colors it
 
                 int index = selectedCell.x + (selectedCell.y * columnCount);
                 Rectangle cell = cells.get(index);
-                g2d.setColor(Color.LIGHT_GRAY);
-                g2d.fill(cell);
+                g.setColor(Color.LIGHT_GRAY);
+                double x = cell.getX(); //Gets coords of the selected cell
+                double y = cell.getY();
+                System.out.println("coord x: " + x + " coord y: " + y);
+
+                if (MainView.hasPlayer == 0) { //If user pressed "Start" then he is allowed to mark the squares
+                    g.fillRect((int) x, (int) y, cellWidth, cellHeight); //Fill it
+                }
             }
 
-            g2d.setColor(Color.BLACK);
+            g.setColor(Color.BLACK);
             for (Rectangle cell : cells) {
-                g2d.draw(cell);
+                double x = cell.getX(); //Gets coords of the cell
+                double y = cell.getY();
+                g.drawRect((int)x, (int)y, cellWidth, cellHeight); //Draws outlines of a rectangle
             }
 
-            g2d.dispose();
+            g.dispose(); //Freeing materials used
         }
     }
