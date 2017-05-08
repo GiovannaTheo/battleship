@@ -1,4 +1,4 @@
-package battleship.gui.main;
+package battleship.gui.grid;
 
 /**
  * Created by arthurdeschamps and theogiovanna on 05.05.17.

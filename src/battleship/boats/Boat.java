@@ -5,6 +5,10 @@ import battleship.grid.Coordinates;
 import battleship.gui.main.ImageComponent;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.lang.reflect.Method;
 
 /**
  * Created by arthurdeschamps and theogiovanna on 05.05.17.
@@ -92,6 +96,8 @@ public abstract class Boat {
     public Boolean isSelected() {
         return GameState.getPlayer().getSelectedBoat().equals(this);
     }
+
+
 
     /*
     Getters and setters

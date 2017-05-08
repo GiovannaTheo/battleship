@@ -19,6 +19,8 @@ import java.awt.*;
 import java.awt.event.*;
 
 import battleship.gui.boats.BoatSelector;
+import battleship.gui.grid.DrawGridOpponent;
+import battleship.gui.grid.DrawGridUser;
 import net.miginfocom.swing.MigLayout;
 
 public class MainView extends JFrame {

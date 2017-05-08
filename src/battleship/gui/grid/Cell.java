@@ -1,4 +1,4 @@
-package battleship.gui.main;
+package battleship.gui.grid;
 
 import battleship.grid.Coordinates;
 
