@@ -10,6 +10,9 @@ package battleship.gui.main;
 
 import battleship.app.GameState;
 import battleship.boats.Boat;
+import battleship.boats.Orientation;
+import battleship.gui.boats.BoatRotator;
+import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.jetbrains.annotations.Contract;
 
 import java.awt.*;
@@ -25,14 +28,14 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
-public class ImageComponent extends JPanel {
+public class BoatImageComponent extends JPanel {
 
     private BufferedImage image;
 
     // Boat associated to this image
     private Boat associatedBoat;
 
-    public ImageComponent(String path, final Boat associatedBoat) {
+    public BoatImageComponent(String path, final Boat associatedBoat, MouseAdapter mouseListener) {
         this.associatedBoat = associatedBoat;
 
         try {
@@ -42,14 +45,8 @@ public class ImageComponent extends JPanel {
         }
 
 
-        // Click handler: the clicked boat becomes the new selected boat
-        addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                GameState.getPlayer().setSelectedBoat(getAssociatedBoat());
-                getParent().repaint();
-            }
-        });
+        // Click handler: depends on the class that uses BoatImageComponent
+        addMouseListener(mouseListener);
     }
 
     @Override
@@ -60,7 +57,7 @@ public class ImageComponent extends JPanel {
         // Rotate image to horizontal
         AffineTransform at = new AffineTransform();
         at.translate(getWidth() / 2, getHeight() / 2);
-        at.rotate(Math.PI/2);
+        at.rotate(this.getRotationAngle(associatedBoat.getOrientation()));
         at.translate(-image.getWidth()/2, -image.getHeight()/2);
 
 
@@ -79,6 +76,25 @@ public class ImageComponent extends JPanel {
     @Contract(pure = true)
     private Boat getAssociatedBoat() {
         return associatedBoat;
+    }
+
+    // Returns the angle to rotate the image of, considering its orientation
+    private Double getRotationAngle(Orientation orientation) {
+        switch (orientation) {
+            case RIGHT:
+                return Math.PI/2;
+
+            case LEFT:
+                return -Math.PI/2;
+
+            case DOWN:
+                return Math.PI;
+
+            case UP:
+                return 0d;
+        }
+
+        return 0d;
     }
 
     // Image is not opaque only if it is selected

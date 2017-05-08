@@ -2,13 +2,9 @@ package battleship.boats;
 
 import battleship.app.GameState;
 import battleship.grid.Coordinates;
-import battleship.gui.main.ImageComponent;
+import battleship.gui.main.BoatImageComponent;
 
-import java.awt.*;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.lang.reflect.Method;
 
 /**
  * Created by arthurdeschamps and theogiovanna on 05.05.17.
@@ -86,8 +82,8 @@ public abstract class Boat {
     }
 
     // Renders object as boat image
-    public ImageComponent getVisualForm() {
-        ImageComponent boatImage =  new ImageComponent(this.getImagePath(), this);
+    public BoatImageComponent getVisualForm(MouseAdapter mouseListener) {
+        BoatImageComponent boatImage =  new BoatImageComponent(this.getImagePath(), this, mouseListener);
         // To make boats full size
         //boatImage.setPreferredSize(new Dimension(Integer.MAX_VALUE,Integer.MAX_VALUE));
         return boatImage;
@@ -131,11 +127,11 @@ public abstract class Boat {
         return length;
     }
 
-    public String getImagePath() {
+    protected String getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    protected void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 }
