@@ -1,7 +1,10 @@
 package battleship.gui.main;
 
 import battleship.app.GameState;
+import battleship.app.Player;
 import battleship.grid.Coordinates;
+
+import battleship.grid.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +12,7 @@ import java.awt.*;
 /**
  * Created by Theo on 08/05/2017.
  */
+
 public class DrawGridUser extends DrawGrid {
 
     public DrawGridUser(){
@@ -46,12 +50,16 @@ public class DrawGridUser extends DrawGrid {
             int index = selectedCell.x + (selectedCell.y * columnCount);
             Cell cell = grid.get(index);
 
-            g.setColor(Color.LIGHT_GRAY);
+            g.setColor(Color.RED);
 
             System.out.println("coord x: " + cell.getCoord().getX() + " coord y: " + cell.getCoord().getY());
 
+            Square square = GameState.getPlayer().getuserGrid().getSquareByCoordinate(cell.getCoord());
+
             if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
-                g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                if (square.hasBoat){ //If there's a boat on the square
+                    g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                }
             }
         }
 
