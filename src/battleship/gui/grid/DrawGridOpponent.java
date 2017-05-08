@@ -6,6 +6,7 @@ import battleship.grid.Coordinates;
 import javax.swing.*;
 import java.awt.*;
 
+
 /**
  * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
@@ -33,13 +34,16 @@ public class DrawGridOpponent extends DrawGrid {
                             yOffset + (row * cellHeight),
                             cellWidth,
                             cellHeight);
-                    grid.add(cell);
-                    cell.setCoord(new Coordinates(row, col)); //Set coord of each cell
+                    if (row != 10){
+                        grid.add(cell);
+                        cell.setCoord(new Coordinates(col, row)); //Set coord of each cell
+                    }
                 }
             }
         }
 
-        if (selectedCell != null) { //If we clicked on one cell, colors it
+
+        if (selectedCell != null && selectedCell.x != 10) { //If we clicked on one cell, colors it
 
             int index = selectedCell.x + (selectedCell.y * columnCount);
             Cell cell = grid.get(index);
@@ -58,13 +62,53 @@ public class DrawGridOpponent extends DrawGrid {
         }
 
         g.setColor(Color.BLACK);
+
         for (Cell cell : grid) {
             double x = cell.getX(); //Gets coords of the cell
             double y = cell.getY();
-            g.drawRect((int) x, (int) y, cellWidth, cellHeight); //Draws outlines of a Cell
+            if (cell.getCoord().getX() != 10) {
+                g.drawRect((int) x, (int) y, cellWidth, cellHeight); //Draws outlines of a Cell
+            }else{
+                switch (cell.getCoord().getY()) {
+                    case 0:
+                        g.drawString("0", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 1:
+                        g.drawString("1", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 2:
+                        g.drawString("2", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 3:
+                        g.drawString("3", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 4:
+                        g.drawString("4", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 5:
+                        g.drawString("5", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 6:
+                        g.drawString("6", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 7:
+                        g.drawString("7", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 8:
+                        g.drawString("8", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    case 9:
+                        g.drawString("9", (int) cell.getCenterX(), (int) cell.getCenterY());
+                        break;
+                    default:
+                        break;
+
+                }
+            }
         }
 
         g.dispose(); //Freeing materials used
     }
 
 }
+

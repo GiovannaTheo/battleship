@@ -1,8 +1,7 @@
+//DRAWGRID - OK
+
 package battleship.gui.grid;
 
-/**
- * Created by arthurdeschamps and theogiovanna on 05.05.17.
- */
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +11,7 @@ import java.util.*;
 
 public class DrawGrid extends JPanel {
 
-    protected int columnCount = 10; //Size of the grid
+    protected int columnCount = 11; //Size of the grid
     protected int rowCount = 10;
     protected java.util.List<Cell> grid;
     protected Point selectedCell; //Selected cell that needs to be filled
@@ -56,19 +55,4 @@ public class DrawGrid extends JPanel {
         };
         addMouseListener(mouseHandlerClick); //Puts the handler defined above in the MouseListener
     }
-
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(500, 500);
-    }
-
-    @Override
-    public void invalidate() {
-        grid.clear();
-        selectedCell = null;
-        super.invalidate();
-    }
-
 }
-
-
