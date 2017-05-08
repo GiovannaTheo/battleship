@@ -2,12 +2,8 @@ package battleship.gui.boats;
 
 import battleship.app.Player;
 import battleship.boats.Boat;
-import battleship.gui.main.MainView;
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  * Created by arthurdeschamps on 07.05.17.

@@ -34,7 +34,7 @@ public class MainView extends JFrame {
         // Components initialization
         this.setBoatSelector(new BoatSelector(GameState.getPlayer()));
 
-        setTitle("Battleship - WarZone");
+        setTitle("battleship - WarZone");
         setSize(1200,800);
         setLocationRelativeTo(null); //Center
         setResizable(true);
@@ -79,12 +79,12 @@ public class MainView extends JFrame {
     private JPanel mainPanel(){ //Set main panel
 
         JPanel panel = new JPanel();
-        panel.setLayout(new MigLayout("debug", "[][grow][]"));
+        panel.setLayout(new MigLayout("", "[][grow][]"));
 
         JButton b1 = new JButton(new Start("Start"));
         panel.add(b1, "growx, w " + this.getWidth()/5);
 
-        //Opponent Grid
+        //Opponent grid
         panel.add(new DrawGrid(), "span 2 3 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
 
         JButton b2 = new JButton(new Abandon("Abandon"));
