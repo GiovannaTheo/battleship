@@ -1,20 +1,18 @@
-package battleship.gui.main;
+package battleship.gui.grid;
 
 import battleship.app.GameState;
-
 import battleship.grid.Coordinates;
 
-import battleship.grid.*;
-
+import javax.swing.*;
 import java.awt.*;
 
 /**
  * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
-public class DrawGridUser extends DrawGrid {
+public class DrawGridOpponent extends DrawGrid {
 
-    public DrawGridUser(){
+    public DrawGridOpponent(){
         super();
     }
 
@@ -49,16 +47,16 @@ public class DrawGridUser extends DrawGrid {
             int index = selectedCell.x + (selectedCell.y * columnCount);
             Cell cell = grid.get(index);
 
-            g.setColor(Color.RED);
-
             System.out.println("coord x: " + cell.getCoord().getX() + " coord y: " + cell.getCoord().getY());
 
-            Square square = GameState.getPlayer().getuserGrid().getSquareByCoordinate(cell.getCoord());
-
             if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
-                if (square.hasBoat){ //If there's a boat on the square
-                    g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                if (JOptionPane.showConfirmDialog(null, "Did you hit one of your opponent's boat?", "WARNING",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                    g.setColor(Color.RED); //Square should be marked red if we touched the opponent boat
+                }else{
+                    g.setColor(Color.WHITE);
                 }
+                g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
             }
         }
 
@@ -71,4 +69,5 @@ public class DrawGridUser extends DrawGrid {
 
         g.dispose(); //Freeing materials used
     }
+
 }
