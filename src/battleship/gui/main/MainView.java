@@ -10,7 +10,6 @@ package battleship.gui.main;
 
 import battleship.app.*;
 
-import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
