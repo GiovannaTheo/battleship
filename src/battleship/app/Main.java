@@ -18,11 +18,11 @@ public class Main {
 
     private static void init() {
 
-        // Init player
-        Player player = new Player();
+        // Init game
+        GameState gm = new GameState(new Player());
 
         // Render main view
-        MainView view = new MainView(player);
+        MainView view = new MainView();
 
     }
 }

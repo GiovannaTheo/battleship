@@ -8,6 +8,9 @@ package battleship.gui.main;
  * This class transforms a image file into a swing image component
  */
 
+import battleship.app.GameState;
+import battleship.app.Player;
+
 import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -32,6 +35,8 @@ public class ImageComponent extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+       
 
         // Rotate image to horizontal
         AffineTransform at = new AffineTransform();
