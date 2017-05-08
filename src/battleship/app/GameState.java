@@ -10,10 +10,12 @@ public class GameState {
 
     private int round;
     private Boolean isUserTurn;
+    private static Player player;
 
     /* Default constructor */
 
-    public GameState(){
+    public GameState(Player playerGlobal){
+        player = playerGlobal;
         this.isUserTurn = true; /* Base case: user plays */
         this.round = 1;
     }
@@ -44,6 +46,9 @@ public class GameState {
         System.exit(0); //Quitting game
     }
 
+    public static Player getPlayer() {
+        return player;
+    }
 }
 
 

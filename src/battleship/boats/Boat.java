@@ -16,6 +16,8 @@ public abstract class Boat {
     private Coordinates headPosition;
     private String imagePath;
 
+    private Boolean isSelected;
+
     /*
      Methods
     */
@@ -26,6 +28,7 @@ public abstract class Boat {
         this.setHitpoints(length);
 
         this.length = length;
+        this.isSelected = true;
 
         // (-1,-1) means the boat is not yet positioned on the board
         this.headPosition = new Coordinates(-1,-1);

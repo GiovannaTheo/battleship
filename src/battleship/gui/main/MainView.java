@@ -24,26 +24,21 @@ import net.miginfocom.swing.MigLayout;
 
 public class MainView extends JFrame {
 
-    // Player (to access its grid, squares, boats, etc
-    private static Player player;
-
     // Components
     private BoatSelector boatSelector;
 
-    public MainView(Player player){
+    public MainView(){
 
         super("MigLayout Basic");
 
-        this.player = player;
-
         // Components initialization
-        this.setBoatSelector(new BoatSelector(this.getPlayer()));
+        this.setBoatSelector(new BoatSelector(GameState.getPlayer()));
 
         setTitle("battleship - WarZone");
         setSize(1200,800);
         setLocationRelativeTo(null); //Center
         setResizable(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setContentPane(mainPanel()); //Set panel
         setVisible(true);
 
@@ -75,7 +70,7 @@ public class MainView extends JFrame {
 
         public void actionPerformed(ActionEvent e) {
             // TODO: init boats view, etc
-            MainView.getPlayer().isPlaying = true;
+            GameState.getPlayer().isPlaying = true;
         }
     }
 
@@ -119,7 +114,4 @@ public class MainView extends JFrame {
         this.boatSelector = boatSelector;
     }
 
-    public static Player getPlayer() {
-        return player;
-    }
 }
