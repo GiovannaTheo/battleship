@@ -62,8 +62,6 @@ public class MainView extends JFrame {
 
     public class Start extends AbstractAction {
 
-
-
         public Start(String texte){
             super(texte);
         }
@@ -85,8 +83,7 @@ public class MainView extends JFrame {
         panel.add(b1, "growx, w " + this.getWidth()/5);
 
         //Opponent grid
-        DrawGrid opponentGrid = new DrawGrid();
-        
+        DrawGridOpponent opponentGrid = new DrawGridOpponent();
         panel.add(opponentGrid, "span 2 3 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
 
         JButton b2 = new JButton(new Abandon("Abandon"));
@@ -99,7 +96,7 @@ public class MainView extends JFrame {
         panel.add(this.getBoatSelector(), "span 1 2 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
         //UserGrid
-        DrawGrid userGrid = new DrawGrid();
+        DrawGridUser userGrid = new DrawGridUser();
         panel.add(userGrid, "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
         return panel;

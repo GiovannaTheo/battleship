@@ -13,10 +13,10 @@ import java.util.logging.Logger;
 
 public class DrawGrid extends JPanel {
 
-    private int columnCount = 10; //Size of the grid
-    private int rowCount = 10;
-    private java.util.List<Cell> grid;
-    private Point selectedCell; //Selected cell that needs to be filled
+    protected int columnCount = 10; //Size of the grid
+    protected int rowCount = 10;
+    protected java.util.List<Cell> grid;
+    protected Point selectedCell; //Selected cell that needs to be filled
 
     public DrawGrid() {
 
@@ -70,55 +70,6 @@ public class DrawGrid extends JPanel {
         super.invalidate();
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-
-        int width = getWidth();
-        int height = getHeight();
-
-        int cellWidth = width / columnCount;
-        int cellHeight = height / rowCount;
-
-        int xOffset = (width - (columnCount * cellWidth)) / 2;
-        int yOffset = (height - (rowCount * cellHeight)) / 2;
-
-        if (grid.isEmpty()) { //Create a cell that are added to the set grid
-            for (int row = 0; row < rowCount; row++) {
-                for (int col = 0; col < columnCount; col++) {
-                    Cell cell = new Cell(
-                            xOffset + (col * cellWidth),
-                            yOffset + (row * cellHeight),
-                            cellWidth,
-                            cellHeight);
-                    grid.add(cell);
-                    cell.setCoord(new Coordinates(row, col)); //Set coord of each cell
-                }
-            }
-        }
-
-        if (selectedCell != null) { //If we clicked on one cell, colors it
-
-            int index = selectedCell.x + (selectedCell.y * columnCount);
-            Cell cell = grid.get(index);
-            g.setColor(Color.LIGHT_GRAY);
-
-
-            System.out.println("coord x: " + cell.getCoord().getX() + " coord y: " + cell.getCoord().getY());
-
-            if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
-                g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
-            }
-        }
-
-        g.setColor(Color.BLACK);
-        for (Cell cell : grid) {
-            double x = cell.getX(); //Gets coords of the cell
-            double y = cell.getY();
-            g.drawRect((int) x, (int) y, cellWidth, cellHeight); //Draws outlines of a Cell
-        }
-
-        g.dispose(); //Freeing materials used
-    }
 }
 
 
