@@ -12,9 +12,6 @@ import java.awt.*;
 
 public class DrawGridOpponent extends DrawGrid {
 
-    public DrawGridOpponent(){
-        super();
-    }
 
     @Override
     protected void paintComponent(Graphics g) {

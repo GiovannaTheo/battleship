@@ -2,6 +2,7 @@ package battleship.gui.boats;
 
 import battleship.app.Player;
 import battleship.boats.Boat;
+import battleship.gui.main.ImageComponent;
 
 import javax.swing.*;
 
@@ -25,7 +26,9 @@ public class BoatSelector extends JPanel {
         // Adds boat image representation to the selector
         for(Boat boat : player.getBoats()) {
             // Adds the swing image component representing the boat to the BoatSelector component
-            this.add(boat.getVisualForm());
+            ImageComponent boatImage = boat.getVisualForm();
+
+            this.add(boatImage);
         }
 
     }

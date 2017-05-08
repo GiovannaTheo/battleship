@@ -14,10 +14,6 @@ import java.awt.*;
 
 public class DrawGridUser extends DrawGrid {
 
-    public DrawGridUser(){
-        super();
-    }
-
     @Override
     protected void paintComponent(Graphics g) {
 
