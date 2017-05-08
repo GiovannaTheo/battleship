@@ -1,7 +1,3 @@
-
-
-//MainView - OK
-
 package battleship.gui.main;
 
 /**
@@ -22,6 +18,7 @@ import battleship.gui.boats.BoatSelector;
 import battleship.gui.grid.DrawGridOpponent;
 import battleship.gui.grid.DrawGridUser;
 import net.miginfocom.swing.MigLayout;
+import net.miginfocom.layout.CC;
 
 public class MainView extends JFrame {
 
@@ -73,7 +70,7 @@ public class MainView extends JFrame {
             setSize(1200,800); //Set size for new panel
             setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
             setLocationRelativeTo(null); //Center
-            setContentPane(mainPanel()); //Set main panel
+            setContentPane(FullPanel()); //Set main panel
         }
     }
 
@@ -116,8 +113,10 @@ public class MainView extends JFrame {
         JButton b2 = new JButton(new Abandon("Abandon"));
         panel.add(b2, "growx, wrap, w " + this.getWidth()/5);
 
+
         JLabel boatOrientation = new JLabel("Boat orientation select should be here");
         panel.add(boatOrientation, "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
+
 
         //JLabel boatOrientation = new JLabel("Boat select should be here");
         panel.add(this.getBoatSelector(), "span 1 2 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
@@ -127,6 +126,31 @@ public class MainView extends JFrame {
         panel.add(userGrid, "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
         return panel;
+    }
+
+    private JPanel FullPanel(){ //Contains explanations and indexes
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new MigLayout("fillx", "[][grow][]"));
+
+        CC componentConstraints = new CC();
+        componentConstraints.alignX("center").spanX(); //To center the text below
+
+        JLabel explanations = new JLabel("Explanations here");
+        panel.add(explanations, componentConstraints);
+
+
+        JLabel jump = new JLabel("");
+        panel.add(jump, componentConstraints);
+
+        JLabel letters = new JLabel("                                                                            A                 B                  C                   D                  E                  F                G                  H                  I                   J");
+        panel.add(letters, "w " + (this.getWidth()-30) + ",center,  grow, wrap, h " + this.getWidth()/13);
+
+        //Mainpanel
+        panel.add(mainPanel(), "span 2 3 " + (this.getWidth() - 30) +  ",center,  grow, wrap, h " + this.getHeight());
+
+        return panel;
+
     }
 
     public BoatSelector getBoatSelector() {
