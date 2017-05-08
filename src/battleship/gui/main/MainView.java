@@ -10,11 +10,13 @@ package battleship.gui.main;
 
 import battleship.app.*;
 
+import javax.imageio.plugins.jpeg.JPEGHuffmanTable;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.AbstractAction;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 import battleship.gui.boats.BoatSelector;
@@ -32,12 +34,12 @@ public class MainView extends JFrame {
         // Components initialization
         this.setBoatSelector(new BoatSelector(GameState.getPlayer()));
 
-        setTitle("battleship - WarZone");
-        setSize(1200,800);
+        setTitle("Battleship - WarZone");
+        setSize(300,300);
         setLocationRelativeTo(null); //Center
         setResizable(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setContentPane(mainPanel()); //Set panel
+        setContentPane(startPanel()); //Set panel
         setVisible(true);
 
     }
@@ -67,18 +69,44 @@ public class MainView extends JFrame {
         public void actionPerformed(ActionEvent e) {
             // TODO: init boats view, etc
             GameState.getPlayer().isPlaying = true;
+            setSize(1200,800); //Set size for new panel
+            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            setLocationRelativeTo(null); //Center
+            setContentPane(mainPanel()); //Set main panel
+        }
+    }
+
+    public class Exit extends AbstractAction {
+
+        public Exit(String texte){
+            super(texte);
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            GameState.abandon();
         }
     }
 
     //Designing the board
+
+    private JPanel startPanel(){
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints(); //To center the start button
+        JButton b1 = new JButton(new Start("Start"));
+        panel.add(b1, gbc); //Adds button and centers it
+        return panel;
+
+    }
 
     private JPanel mainPanel(){ //Set main panel
 
         JPanel panel = new JPanel();
         panel.setLayout(new MigLayout("", "[][grow][]"));
 
-        JButton b1 = new JButton(new Start("Start"));
-        panel.add(b1, "growx, w " + this.getWidth()/5);
+        JButton b1 = new JButton(new Exit("Exit"));
+        panel.add(b1, " growx, w " + this.getWidth()/5);
 
         //Opponent grid
         DrawGridOpponent opponentGrid = new DrawGridOpponent();
@@ -99,7 +127,6 @@ public class MainView extends JFrame {
 
         return panel;
     }
-
 
     public BoatSelector getBoatSelector() {
         return boatSelector;
