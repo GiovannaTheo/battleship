@@ -1,5 +1,6 @@
 package battleship.boats;
 
+import battleship.app.GameState;
 import battleship.grid.Coordinates;
 import battleship.gui.main.ImageComponent;
 
@@ -16,7 +17,6 @@ public abstract class Boat {
     private Coordinates headPosition;
     private String imagePath;
 
-    private Boolean isSelected;
 
     /*
      Methods
@@ -28,7 +28,6 @@ public abstract class Boat {
         this.setHitpoints(length);
 
         this.length = length;
-        this.isSelected = true;
 
         // (-1,-1) means the boat is not yet positioned on the board
         this.headPosition = new Coordinates(-1,-1);
@@ -84,10 +83,14 @@ public abstract class Boat {
 
     // Renders object as boat image
     public ImageComponent getVisualForm() {
-        ImageComponent boatImage =  new ImageComponent(this.getImagePath());
+        ImageComponent boatImage =  new ImageComponent(this.getImagePath(), this);
         // To make boats full size
         //boatImage.setPreferredSize(new Dimension(Integer.MAX_VALUE,Integer.MAX_VALUE));
         return boatImage;
+    }
+
+    public Boolean isSelected() {
+        return GameState.getPlayer().getSelectedBoat().equals(this);
     }
 
     /*

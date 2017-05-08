@@ -8,8 +8,7 @@ package battleship.gui.main;
  * This class transforms a image file into a swing image component
  */
 
-import battleship.app.GameState;
-import battleship.app.Player;
+import battleship.boats.Boat;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -24,7 +23,12 @@ public class ImageComponent extends JPanel {
 
     private BufferedImage image;
 
-    public ImageComponent(String path) {
+    // Boat associated to this image
+    private Boat associatedBoat;
+
+    public ImageComponent(String path, Boat associatedBoat) {
+        this.associatedBoat = associatedBoat;
+
         try {
             image = ImageIO.read(new File(path));
         } catch (IOException ex) {
@@ -36,7 +40,10 @@ public class ImageComponent extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-       
+        if (this.getAssociatedBoat().isSelected()) {
+            // Different styling for selected boat
+            this.setOpaque(true);
+        }
 
         // Rotate image to horizontal
         AffineTransform at = new AffineTransform();
@@ -54,5 +61,7 @@ public class ImageComponent extends JPanel {
 
     }
 
-
+    public Boat getAssociatedBoat() {
+        return associatedBoat;
+    }
 }

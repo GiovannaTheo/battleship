@@ -1,6 +1,8 @@
 package battleship.gui.main;
 
 
+import battleship.app.GameState;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -101,7 +103,7 @@ public class DrawGrid extends JPanel {
 
                 System.out.println("coord x: " + x + " coord y: " + y);
 
-                if (MainView.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
+                if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
                     g.fillRect((int) x, (int) y, cellWidth, cellHeight); //Fill it
                 }
             }
