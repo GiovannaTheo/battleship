@@ -3,6 +3,7 @@ package battleship.boats;
 import battleship.app.GameState;
 import battleship.grid.Coordinates;
 import battleship.gui.main.BoatImageComponent;
+import com.sun.tools.corba.se.idl.constExpr.Or;
 
 import java.awt.event.MouseAdapter;
 
@@ -93,6 +94,45 @@ public abstract class Boat {
         return GameState.getPlayer().getSelectedBoat().equals(this);
     }
 
+    public void rotateLeft() {
+        switch (this.getOrientation()) {
+            case UP:
+                this.setOrientation(Orientation.LEFT);
+                break;
+
+            case DOWN:
+                this.setOrientation(Orientation.RIGHT);
+                break;
+
+            case LEFT:
+                this.setOrientation(Orientation.DOWN);
+                break;
+
+            case RIGHT:
+                this.setOrientation(Orientation.UP);
+                break;
+        }
+    }
+
+    public void rotateRight() {
+        switch (this.getOrientation()) {
+            case UP:
+                this.setOrientation(Orientation.RIGHT);
+                break;
+
+            case DOWN:
+                this.setOrientation(Orientation.LEFT);
+                break;
+
+            case LEFT:
+                this.setOrientation(Orientation.UP);
+                break;
+
+            case RIGHT:
+                this.setOrientation(Orientation.DOWN);
+                break;
+        }
+    }
 
 
     /*
