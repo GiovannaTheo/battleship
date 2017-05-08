@@ -6,8 +6,9 @@ import battleship.grid.Coordinates
 import org.junit.Test
 
 /**
- * Created by arthurdeschamps on 06.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
+
 class BoatsTest extends GroovyTestCase {
 
     /**

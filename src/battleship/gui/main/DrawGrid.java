@@ -1,15 +1,14 @@
 package battleship.gui.main;
 
-
-import battleship.app.GameState;
-import battleship.grid.Coordinates;
+/**
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
+ */
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.util.*;
-import java.util.logging.Logger;
 
 public class DrawGrid extends JPanel {
 

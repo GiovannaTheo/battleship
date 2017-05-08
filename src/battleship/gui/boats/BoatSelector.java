@@ -6,7 +6,7 @@ import battleship.boats.Boat;
 import javax.swing.*;
 
 /**
- * Created by arthurdeschamps on 07.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
 /**

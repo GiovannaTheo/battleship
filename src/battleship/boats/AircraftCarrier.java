@@ -1,8 +1,9 @@
 package battleship.boats;
 
 /**
- * Created by arthurdeschamps on 05.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
+
 public class AircraftCarrier extends Boat {
 
     public AircraftCarrier() {

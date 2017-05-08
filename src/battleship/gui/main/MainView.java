@@ -5,7 +5,7 @@
 package battleship.gui.main;
 
 /**
- * Created by arthurdeschamps on 05.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
 import battleship.app.*;
@@ -16,10 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.AbstractAction;
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.Map;
 
 import battleship.gui.boats.BoatSelector;
-import battleship.gui.main.DrawGrid;
 import net.miginfocom.swing.MigLayout;
 
 public class MainView extends JFrame {

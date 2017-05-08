@@ -1,16 +1,15 @@
 package battleship.gui.main;
 
 import battleship.app.GameState;
-import battleship.app.Player;
+
 import battleship.grid.Coordinates;
 
 import battleship.grid.*;
 
-import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Theo on 08/05/2017.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
 public class DrawGridUser extends DrawGrid {

@@ -7,8 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Theo on 08/05/2017.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
+
 public class DrawGridOpponent extends DrawGrid {
 
     public DrawGridOpponent(){

@@ -1,7 +1,7 @@
 package battleship.app;
 
 /**
- * Created by arthurdeschamps on 05.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
 public class GameState {

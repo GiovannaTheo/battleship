@@ -4,7 +4,7 @@ import battleship.app.GameState
 import battleship.app.Player
 
 /**
- * Created by Theo on 06/05/2017.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
 import org.junit.Test
