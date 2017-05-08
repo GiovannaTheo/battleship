@@ -85,7 +85,9 @@ public class MainView extends JFrame {
         panel.add(b1, "growx, w " + this.getWidth()/5);
 
         //Opponent grid
-        panel.add(new DrawGrid(), "span 2 3 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
+        DrawGrid opponentGrid = new DrawGrid();
+        
+        panel.add(opponentGrid, "span 2 3 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
 
         JButton b2 = new JButton(new Abandon("Abandon"));
         panel.add(b2, "growx, wrap, w " + this.getWidth()/5);
@@ -97,7 +99,8 @@ public class MainView extends JFrame {
         panel.add(this.getBoatSelector(), "span 1 2 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
         //UserGrid
-        panel.add(new DrawGrid(), "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
+        DrawGrid userGrid = new DrawGrid();
+        panel.add(userGrid, "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
         return panel;
     }

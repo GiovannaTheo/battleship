@@ -17,7 +17,6 @@ public abstract class Boat {
     private Coordinates headPosition;
     private String imagePath;
 
-
     /*
      Methods
     */

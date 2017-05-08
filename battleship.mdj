@@ -1,7 +1,7 @@
 {
 	"_type": "Project",
 	"_id": "AAAAAAFF+h6SjaM2Hec=",
-	"name": "Battleship",
+	"name": "battleship",
 	"ownedElements": [
 		{
 			"_type": "UMLModel",

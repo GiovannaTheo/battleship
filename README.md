@@ -1,4 +1,4 @@
-# Battleship
+# battleship
 Simple battleship game in Java.
 
 Guideline:
