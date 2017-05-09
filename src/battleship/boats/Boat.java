@@ -86,6 +86,10 @@ public abstract class Boat {
         return  new BoatImageComponent(this.getImagePath(), this, mouseListener);
     }
 
+    public String getPath(){
+        return this.getImagePath();
+    }
+
     public Boolean isSelected() {
         return (GameState.getPlayer().getSelectedBoat() != null && GameState.getPlayer().getSelectedBoat().equals(this));
     }

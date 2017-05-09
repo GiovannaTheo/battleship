@@ -7,6 +7,7 @@ import battleship.gui.main.game.GameView;
 import battleship.gui.main.game.MainFrame;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -46,4 +47,11 @@ public class BoatSelector extends JPanel {
 
     }
 
+    @Override
+    public void repaint() {
+        for(final Boat boat : GameState.getPlayer().getBoats()) {
+            boat.setOrientation(Orientation.RIGHT);
+        }
+        super.repaint();
+    }
 }

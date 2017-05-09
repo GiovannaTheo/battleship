@@ -20,15 +20,8 @@ public class BoatRotator extends JPanel {
 
     public BoatRotator() {
 
-        JButton rotateLeftButton = new JButton("Rotate left");
-        rotateLeftButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                GameState.getPlayer().getSelectedBoat().rotateLeft();
-                GameView.getBoatRotator().repaint();
-            }
-        });
-        JButton rotateRightButton = new JButton("Rotate right");
+        JButton rotateRightButton = new JButton("Rotate");
+
         rotateRightButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -37,13 +30,12 @@ public class BoatRotator extends JPanel {
             }
         });
 
-        this.rotateButtons = new JPanel(new GridLayout(1,2));
-        this.rotateButtons.add(rotateLeftButton);
-        this.rotateButtons.add(rotateRightButton);
-        this.rotateButtons.setMaximumSize(new Dimension(this.getWidth()/10,this.getHeight()/4));
+        this.rotateButtons = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        this.rotateButtons.add(rotateRightButton,  c);
 
         this.setLayout(new GridLayout(2,1));
-
 
         if (this.getBoatImage() != null) {
             this.add(this.getBoatImage());

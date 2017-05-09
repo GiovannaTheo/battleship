@@ -65,9 +65,15 @@ public class GridUser extends JPanel {
 
                 }
 
-                Graphics g = getGraphics();
-                paintComponent(g); // Updates the panel
+                //Graphics g = getGraphics();
+                //paintComponent(g); // Updates the panel
 
+                int index = selectedCell.x + (selectedCell.y * columnCount);
+                Cell cell = grid.get(index);
+
+                if (GameState.getPlayer().getSelectedBoat() != null){
+                    addBoat(GameState.getPlayer().getSelectedBoat(), cell);
+                }
             }
         };
         addMouseListener(mouseHandlerClick); //Puts the handler defined above in the MouseListener
@@ -119,6 +125,7 @@ public class GridUser extends JPanel {
                     //g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
                     g.fillOval((int)(cell.getX() + cell.getWidth() / 2.75), (int)(cell.getY() + cell.getHeight() / 4), cellWidth/4, cellWidth/4);
                 }
+
 
 
                 // If user wants to place a boat
@@ -180,40 +187,44 @@ public class GridUser extends JPanel {
 
     // Add a boat with head at headCell to the grid
     private void addBoat(Boat boatToAdd, Cell headCell) {
-        try {
-            Logger.getGlobal().info("adding boat");
-            // Get boat image
-            BoatImageComponent boatImage = boatToAdd.getVisualForm(null);
-            boatImage.setLayout(null);
-            // Add boat to mainView
-            this.getParent().add(boatImage);
-            // Size of the boat
-            boatImage.setSize(new Dimension((int)headCell.getWidth()*boatToAdd.getLength(), (int)headCell.getHeight()/2));
-            // Location
-            boatImage.setLocation((int) headCell.getX(), (int) headCell.getY());
+            try {
+                Logger.getGlobal().info("adding boat");
+                // Get boat image
+                BoatImageComponent boatImage = boatToAdd.getVisualForm(null);
+                boatImage.setLayout(null);
+                // Add boat to mainView
 
-            // Removes selected boat
-            GameState.getPlayer().getBoats().remove(boatToAdd);
+                this.add(boatImage);
+                // Size of the boat
+                boatImage.setSize(new Dimension((int)headCell.getWidth()*boatToAdd.getLength(), (int)headCell.getHeight()/2));
+                // Location
+                boatImage.setLocation((int) headCell.getX(), (int) headCell.getY());
 
-            // When boat is placed, selectedBoat becomes either the
-            // first boat in the list, or null
-            if (GameState.getPlayer().getBoats().isEmpty()) {
-                GameState.getPlayer().setSelectedBoat(null);
-            } else {
-                GameState.getPlayer().setSelectedBoat(GameState.getPlayer().getBoats().get(0));
+                // Removes selected boat
+                GameState.getPlayer().getBoats().remove(boatToAdd);
+
+                // When boat is placed, selectedBoat becomes either the
+                // first boat in the list, or null
+                if (GameState.getPlayer().getBoats().isEmpty()) {
+                    GameState.getPlayer().setSelectedBoat(null);
+                } else {
+                    GameState.getPlayer().setSelectedBoat(GameState.getPlayer().getBoats().get(0));
+                }
+
+                // Update views
+                getBoatRotator().repaint();
+                getBoatSelector().repaint();
+
+                // Update views
+                getBoatRotator().repaint();
+                getBoatSelector().repaint();
+
+
+            } catch (NullPointerException e) {
+                e.printStackTrace();
             }
 
-            // Update views
-            getBoatRotator().repaint();
-            getBoatSelector().repaint();
 
-
-            Logger.getGlobal().warning("Number of boats left: "+Integer.toString(GameState.getPlayer().getBoats().size()));
-
-
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
     }
 
 }
