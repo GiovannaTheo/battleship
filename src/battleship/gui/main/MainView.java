@@ -110,7 +110,7 @@ public class MainView extends JFrame {
     private JPanel mainPanel(){ //Set main panel
 
         JPanel panel = new JPanel();
-        panel.setLayout(new MigLayout("fillx", "[][grow][]"));
+        panel.setLayout(new MigLayout("", "[][grow][]"));
 
         JButton b1 = new JButton(new Exit("Exit"));
         panel.add(b1, " growx, w " + this.getWidth()/5);
@@ -139,7 +139,7 @@ public class MainView extends JFrame {
     private JPanel FullPanel(){ //Contains explanations and indexes
 
         JPanel panel = new JPanel();
-        panel.setLayout(new MigLayout("fillx", "[][grow][]"));
+        panel.setLayout(new MigLayout("", "[][grow][]"));
 
         CC componentConstraints = new CC();
         componentConstraints.alignX("center").spanX(); //To center the text below
