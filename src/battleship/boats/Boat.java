@@ -3,6 +3,7 @@ package battleship.boats;
 import battleship.app.GameState;
 import battleship.grid.Coordinates;
 import battleship.gui.main.BoatImageComponent;
+import com.sun.tools.corba.se.idl.constExpr.Or;
 
 import java.awt.event.MouseAdapter;
 
@@ -83,14 +84,51 @@ public abstract class Boat {
 
     // Renders object as boat image
     public BoatImageComponent getVisualForm(MouseAdapter mouseListener) {
-        BoatImageComponent boatImage =  new BoatImageComponent(this.getImagePath(), this, mouseListener);
-        // To make boats full size
-        //boatImage.setPreferredSize(new Dimension(Integer.MAX_VALUE,Integer.MAX_VALUE));
-        return boatImage;
+        return  new BoatImageComponent(this.getImagePath(), this, mouseListener);
     }
 
     public Boolean isSelected() {
-        return GameState.getPlayer().getSelectedBoat().equals(this);
+        return (GameState.getPlayer().getSelectedBoat() != null && GameState.getPlayer().getSelectedBoat().equals(this));
+    }
+
+    public void rotateLeft() {
+        switch (this.getOrientation()) {
+            case UP:
+                this.setOrientation(Orientation.LEFT);
+                break;
+
+            case DOWN:
+                this.setOrientation(Orientation.RIGHT);
+                break;
+
+            case LEFT:
+                this.setOrientation(Orientation.DOWN);
+                break;
+
+            case RIGHT:
+                this.setOrientation(Orientation.UP);
+                break;
+        }
+    }
+
+    public void rotateRight() {
+        switch (this.getOrientation()) {
+            case UP:
+                this.setOrientation(Orientation.RIGHT);
+                break;
+
+            case DOWN:
+                this.setOrientation(Orientation.LEFT);
+                break;
+
+            case LEFT:
+                this.setOrientation(Orientation.UP);
+                break;
+
+            case RIGHT:
+                this.setOrientation(Orientation.DOWN);
+                break;
+        }
     }
 
 

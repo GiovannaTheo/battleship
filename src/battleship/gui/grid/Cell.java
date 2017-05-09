@@ -16,6 +16,8 @@ public class Cell extends Rectangle{
         super(x, y, width, height);
     }
 
+
+
     public Coordinates getCoord(){
         return this.coord;
     }

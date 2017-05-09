@@ -57,22 +57,7 @@ public class Player {
         // TODO: call this.setSelectedBoat on the mouse selected boat
     }
 
-    public void placeBoat(Coordinates coord, Orientation orientation) {
-        // TODO: place the boat on the gui
 
-
-        // Delete boat from boats list
-        this.getBoats().remove(selectedBoat);
-
-        // When boat is placed, selectedBoat becomes either the
-        // first boat in the list, or null
-        if (this.getBoats().isEmpty()) {
-            this.setSelectedBoat(null);
-        } else {
-            this.setSelectedBoat(this.getBoats().get(0));
-        }
-
-    }
 
     public void receiveAttack(Coordinates coord) {
         // Checks if there is a boat at these coordinates
