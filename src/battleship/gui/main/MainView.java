@@ -121,7 +121,7 @@ public class MainView extends JFrame {
 
         JButton b2 = new JButton(new Abandon("Abandon"));
         panel.add(b2, "growx, wrap, w " + this.getWidth()/5);
-        
+
 
         panel.add(MainView.getBoatRotator(), "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
 
