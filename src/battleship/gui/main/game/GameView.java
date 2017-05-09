@@ -5,7 +5,6 @@ import battleship.gui.boats.BoatSelector;
 import battleship.gui.grid.GridOpponent;
 import battleship.gui.grid.GridUser;
 import battleship.gui.main.buttonactions.AbandonAction;
-import com.sun.java.swing.action.ExitAction;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
@@ -24,17 +23,17 @@ public class GameView extends JPanel {
     private static final JButton exitButton = new JButton(new battleship.gui.main.buttonactions.ExitAction("Exit"));
     private static final JButton abandonButton = new JButton(new AbandonAction("Abandon"));
 
-    public GameView() {
+    GameView() {
         // Set layout
         this.setLayout(new MigLayout("debug","[][grow][]"));
 
         // Add components
         this.add(exitButton," growx, w 20%");
-        this.add(gridOpponent,"span 2 3 20%, grow, wrap, h 25%");
+        this.add(gridOpponent,"span 2 3 20%, grow, wrap, h 40%");
         this.add(abandonButton,"growx, wrap, w 20%");
         this.add(boatRotator, "w 20%, grow, wrap, h 25%");
-        this.add(boatSelector, "span 1 2 20%, grow, wrap, h 33%");
-        this.add(gridUser, "w 20%, grow, wrap, h 33%");
+        this.add(boatSelector, "span 1 2 20%, grow, wrap, h 50%");
+        this.add(gridUser, "w 20%, grow, wrap, h 40%");
 
 
     }

@@ -32,7 +32,7 @@ public class MainView extends JPanel {
         // Add components to our MainView
         this.add(instructions, instructionLabelConstraint);
         this.add(letters,"w 100%-30, center, grow, wrap, h 8%");
-        this.add(gameView, "span 2 3 100%-30, center, grow, wrap, h 100%");
+        this.add(gameView, "span 2 3 100%-30, center, grow, wrap, h 92%");
 
     }
 
