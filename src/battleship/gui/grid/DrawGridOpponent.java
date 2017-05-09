@@ -2,6 +2,8 @@ package battleship.gui.grid;
 
 import battleship.app.GameState;
 import battleship.grid.Coordinates;
+import battleship.grid.OpponentGrid;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -57,7 +59,9 @@ public class DrawGridOpponent extends DrawGrid {
                 }else{
                     g.setColor(Color.WHITE);
                 }
-                g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                //g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                g.fillOval((int)(cell.getX() + cell.getWidth() / 2.75), (int)(cell.getY() + cell.getHeight() / 4), cellWidth/4, cellWidth/4);
+                //OpponentGrid.markSquare();
             }
         }
 

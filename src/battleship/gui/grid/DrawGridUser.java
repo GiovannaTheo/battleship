@@ -55,7 +55,8 @@ public class DrawGridUser extends DrawGrid {
 
             if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
                 if (square.hasBoat){ //If there's a boat on the square
-                    g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                    //g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                    g.fillOval((int)(cell.getX() + cell.getWidth() / 2.75), (int)(cell.getY() + cell.getHeight() / 4), cellWidth/4, cellWidth/4);
                 }
             }
         }
