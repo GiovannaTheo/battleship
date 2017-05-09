@@ -84,14 +84,11 @@ public abstract class Boat {
 
     // Renders object as boat image
     public BoatImageComponent getVisualForm(MouseAdapter mouseListener) {
-        BoatImageComponent boatImage =  new BoatImageComponent(this.getImagePath(), this, mouseListener);
-        // To make boats full size
-        //boatImage.setPreferredSize(new Dimension(Integer.MAX_VALUE,Integer.MAX_VALUE));
-        return boatImage;
+        return  new BoatImageComponent(this.getImagePath(), this, mouseListener);
     }
 
     public Boolean isSelected() {
-        return GameState.getPlayer().getSelectedBoat().equals(this);
+        return (GameState.getPlayer().getSelectedBoat() != null && GameState.getPlayer().getSelectedBoat().equals(this));
     }
 
     public void rotateLeft() {
@@ -133,6 +130,7 @@ public abstract class Boat {
                 break;
         }
     }
+
 
 
     /*

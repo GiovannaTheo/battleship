@@ -21,6 +21,7 @@ import battleship.gui.grid.DrawGridOpponent;
 import battleship.gui.grid.DrawGridUser;
 import net.miginfocom.swing.MigLayout;
 import net.miginfocom.layout.CC;
+import org.jetbrains.annotations.Contract;
 
 public class MainView extends JFrame {
 
@@ -162,19 +163,21 @@ public class MainView extends JFrame {
     }
 
 
+    @Contract(pure = true)
     public static BoatSelector getBoatSelector() {
         return boatSelector;
     }
 
     private void setBoatSelector(BoatSelector boatSelector) {
-        this.boatSelector = boatSelector;
+        MainView.boatSelector = boatSelector;
     }
 
+    @Contract(pure = true)
     public static BoatRotator getBoatRotator() {
         return boatRotator;
     }
 
     private void setBoatRotator(BoatRotator boatRotator) {
-        this.boatRotator = boatRotator;
+        MainView.boatRotator = boatRotator;
     }
 }

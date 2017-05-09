@@ -16,9 +16,13 @@ public class DrawGrid extends JPanel {
     protected java.util.List<Cell> grid;
     protected Point selectedCell; //Selected cell that needs to be filled
 
+
     public DrawGrid() {
 
         grid = new ArrayList<>(columnCount * rowCount);
+
+        // Init dimensions to 0 (real values are initialized in mouseClicked handler
+
         MouseAdapter mouseHandlerClick;
         mouseHandlerClick = new MouseAdapter() {
 

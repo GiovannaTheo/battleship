@@ -7,8 +7,11 @@ import battleship.grid.Coordinates;
 
 import battleship.grid.*;
 import battleship.gui.main.BoatImageComponent;
+import battleship.gui.main.MainView;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -67,11 +70,7 @@ public class DrawGridUser extends DrawGrid {
                 // If user wants to place a boat
                 Boat selectedBoat = GameState.getPlayer().getSelectedBoat();
                 if (selectedBoat != null) {
-                    Logger.getGlobal().warning("boat placed");
-                    BoatImageComponent boatImage = selectedBoat.getVisualForm(null);
-                    //boatImage.setLayout(null);
-                    boatImage.setSize(new Dimension(50,10));
-                    boatImage.setLocation((int)cell.getX(),(int) cell.getY());
+                    this.addBoat(selectedBoat, cell);
                 }
             }
         }
@@ -123,4 +122,44 @@ public class DrawGridUser extends DrawGrid {
 
         g.dispose(); //Freeing materials used
     }
+
+
+    // Add a boat with head at headCell to the grid
+    private void addBoat(Boat boatToAdd, Cell headCell) {
+        try {
+            Logger.getGlobal().info("adding boat");
+            // Get boat image
+            BoatImageComponent boatImage = boatToAdd.getVisualForm(null);
+            boatImage.setLayout(null);
+            // Add boat to mainView
+            this.getParent().add(boatImage);
+            // Size of the boat
+            boatImage.setSize(new Dimension((int)headCell.getWidth()*boatToAdd.getLength(), (int)headCell.getHeight()/2));
+            // Location
+            boatImage.setLocation((int) headCell.getX(), (int) headCell.getY());
+
+            // Removes selected boat
+            GameState.getPlayer().getBoats().remove(boatToAdd);
+
+            // When boat is placed, selectedBoat becomes either the
+            // first boat in the list, or null
+            if (GameState.getPlayer().getBoats().isEmpty()) {
+                GameState.getPlayer().setSelectedBoat(null);
+            } else {
+                GameState.getPlayer().setSelectedBoat(GameState.getPlayer().getBoats().get(0));
+            }
+
+            // Update views
+            MainView.getBoatRotator().repaint();
+            MainView.getBoatSelector().repaint();
+
+
+            Logger.getGlobal().warning("Number of boats left: "+Integer.toString(GameState.getPlayer().getBoats().size()));
+
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
