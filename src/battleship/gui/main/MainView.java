@@ -121,17 +121,13 @@ public class MainView extends JFrame {
         JButton b2 = new JButton(new Abandon("Abandon"));
         panel.add(b2, "growx, wrap, w " + this.getWidth()/5);
 
-<<<<<<< HEAD
 
-        JLabel boatOrientation = new JLabel("Boat orientation select should be here");
-        panel.add(boatOrientation, "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
-=======
-        panel.add(this.getBoatRotator(), "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
->>>>>>> d7b6f218a9f8855ac9aa217fdb69ea6f034ed326
+        panel.add(MainView.getBoatRotator(), "w " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/4);
+
 
 
         //JLabel boatOrientation = new JLabel("Boat select should be here");
-        panel.add(this.getBoatSelector(), "span 1 2 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
+        panel.add(MainView.getBoatSelector(), "span 1 2 " + this.getWidth()/5 + ", grow, wrap, h " + this.getWidth()/3);
 
         //UserGrid
         DrawGridUser userGrid = new DrawGridUser();
@@ -140,7 +136,6 @@ public class MainView extends JFrame {
         return panel;
     }
 
-<<<<<<< HEAD
     private JPanel FullPanel(){ //Contains explanations and indexes
 
         JPanel panel = new JPanel();
@@ -166,10 +161,8 @@ public class MainView extends JFrame {
 
     }
 
-    public BoatSelector getBoatSelector() {
-=======
+
     public static BoatSelector getBoatSelector() {
->>>>>>> d7b6f218a9f8855ac9aa217fdb69ea6f034ed326
         return boatSelector;
     }
 
@@ -177,9 +170,6 @@ public class MainView extends JFrame {
         this.boatSelector = boatSelector;
     }
 
-<<<<<<< HEAD
-}
-=======
     public static BoatRotator getBoatRotator() {
         return boatRotator;
     }
@@ -188,4 +178,3 @@ public class MainView extends JFrame {
         this.boatRotator = boatRotator;
     }
 }
->>>>>>> d7b6f218a9f8855ac9aa217fdb69ea6f034ed326

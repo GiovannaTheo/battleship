@@ -2,11 +2,14 @@ package battleship.gui.grid;
 
 import battleship.app.GameState;
 
+import battleship.boats.Boat;
 import battleship.grid.Coordinates;
 
 import battleship.grid.*;
+import battleship.gui.main.BoatImageComponent;
 
 import java.awt.*;
+import java.util.logging.Logger;
 
 /**
  * Created by arthurdeschamps and theogiovanna on 05.05.17.
@@ -44,18 +47,31 @@ public class DrawGridUser extends DrawGrid {
 
         if (selectedCell != null && selectedCell.x != 10) { //If we clicked on one cell, colors it
 
+            // If user is still placing the boats
+
+
             int index = selectedCell.x + (selectedCell.y * columnCount);
             Cell cell = grid.get(index);
 
             g.setColor(Color.RED);
 
-            System.out.println("coord x: " + cell.getCoord().getX() + " coord y: " + cell.getCoord().getY());
 
             Square square = GameState.getPlayer().getuserGrid().getSquareByCoordinate(cell.getCoord());
 
             if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
                 if (square.hasBoat){ //If there's a boat on the square
                     g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
+                }
+
+
+                // If user wants to place a boat
+                Boat selectedBoat = GameState.getPlayer().getSelectedBoat();
+                if (selectedBoat != null) {
+                    Logger.getGlobal().warning("boat placed");
+                    BoatImageComponent boatImage = selectedBoat.getVisualForm(null);
+                    //boatImage.setLayout(null);
+                    boatImage.setSize(new Dimension(50,10));
+                    boatImage.setLocation((int)cell.getX(),(int) cell.getY());
                 }
             }
         }

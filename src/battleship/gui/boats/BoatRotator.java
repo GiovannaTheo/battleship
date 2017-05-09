@@ -47,7 +47,7 @@ public class BoatRotator extends JPanel {
         this.rotateButtons = new JPanel(new GridLayout(1,2));
         this.rotateButtons.add(rotateLeftButton);
         this.rotateButtons.add(rotateRightButton);
-        this.rotateButtons.setMaximumSize(new Dimension(this.getWidth(),this.getHeight()/4));
+        this.rotateButtons.setMaximumSize(new Dimension(this.getWidth()/10,this.getHeight()/4));
 
         this.setLayout(new GridLayout(2,1));
 

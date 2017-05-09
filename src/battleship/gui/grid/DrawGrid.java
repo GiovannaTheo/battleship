@@ -49,7 +49,7 @@ public class DrawGrid extends JPanel {
                 }
 
                 Graphics g = getGraphics();
-                paintComponent(g); //Updates the panel
+                paintComponent(g); // Updates the panel
 
             }
         };
