@@ -6,29 +6,31 @@ import battleship.boats.Boat;
 import battleship.grid.Coordinates;
 
 import battleship.grid.*;
-import battleship.gui.main.BoatImageComponent;
-import battleship.gui.main.MainView;
+import battleship.gui.boats.BoatImageComponent;
+import battleship.gui.main.game.GameView;
+import battleship.gui.main.game.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static battleship.gui.main.game.GameView.*;
 
 /**
  * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
-public class DrawGridUser extends JPanel {
+public class GridUser extends JPanel {
 
     protected int columnCount = 11; //Size of the grid
     protected int rowCount = 10;
     protected java.util.List<Cell> grid;
     protected Point selectedCell; //Selected cell that needs to be filled
 
-    public DrawGridUser() {
+    public GridUser() {
 
         grid = new ArrayList<>(columnCount * rowCount);
 
@@ -202,8 +204,8 @@ public class DrawGridUser extends JPanel {
             }
 
             // Update views
-            MainView.getBoatRotator().repaint();
-            MainView.getBoatSelector().repaint();
+            getBoatRotator().repaint();
+            getBoatSelector().repaint();
 
 
             Logger.getGlobal().warning("Number of boats left: "+Integer.toString(GameState.getPlayer().getBoats().size()));

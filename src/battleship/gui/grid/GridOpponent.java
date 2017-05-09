@@ -16,14 +16,14 @@ import java.util.ArrayList;
  * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
-public class DrawGridOpponent extends JPanel {
+public class GridOpponent extends JPanel {
 
     protected int columnCount = 11; //Size of the grid
     protected int rowCount = 10;
     protected java.util.List<Cell> grid;
     protected Point selectedCell; //Selected cell that needs to be filled
 
-    public DrawGridOpponent() {
+    public GridOpponent() {
 
         grid = new ArrayList<>(columnCount * rowCount);
 
