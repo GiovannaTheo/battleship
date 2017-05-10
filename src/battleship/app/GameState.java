@@ -6,13 +6,11 @@ package battleship.app;
 
 public class GameState {
 
-    /* Attributes of GameState class */
 
     private int round;
     private Boolean isUserTurn;
     private static Player player;
 
-    /* Default constructor */
 
     public GameState(Player playerGlobal){
         player = playerGlobal;
@@ -20,7 +18,7 @@ public class GameState {
         this.round = 1;
     }
 
-    /* Methods of GameState class */
+
 
     public Boolean getIsUserTurn(){
         return this.isUserTurn;
