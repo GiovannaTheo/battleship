@@ -51,8 +51,6 @@ Guideline:
     - isEmpty: bool
     - isBoat: bool
     - isDown: bool
-    
- - Determine who needs to work with who
  
 - RDD analyse and CRC cards
 
@@ -65,4 +63,4 @@ Guideline:
 - Create the stateChart diagram (only for non-trivial parts of the game)
   - Done.
 - Implement the code
-  
+   - Done.

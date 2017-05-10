@@ -2,8 +2,7 @@ package battleship.boats;
 
 import battleship.app.GameState;
 import battleship.grid.Coordinates;
-import battleship.gui.main.BoatImageComponent;
-import com.sun.tools.corba.se.idl.constExpr.Or;
+import battleship.gui.boats.BoatImageComponent;
 
 import java.awt.event.MouseAdapter;
 

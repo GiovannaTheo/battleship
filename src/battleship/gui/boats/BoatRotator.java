@@ -1,21 +1,14 @@
 package battleship.gui.boats;
 
 import battleship.app.GameState;
-import battleship.app.Main;
-import battleship.boats.Boat;
-import battleship.gui.main.BoatImageComponent;
-import battleship.gui.main.MainView;
-import net.miginfocom.swing.MigLayout;
-import org.jetbrains.annotations.Contract;
+import battleship.gui.main.game.GameView;
+import battleship.gui.main.game.MainFrame;
 import org.jetbrains.annotations.Nullable;
-import sun.rmi.runtime.Log;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.logging.Logger;
 
 /**
  * Created by arthurdeschamps on 08.05.17.
@@ -28,11 +21,12 @@ public class BoatRotator extends JPanel {
     public BoatRotator() {
 
         JButton rotateRightButton = new JButton("Rotate");
+
         rotateRightButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 GameState.getPlayer().getSelectedBoat().rotateRight();
-                MainView.getBoatRotator().repaint();
+                GameView.getBoatRotator().repaint();
             }
         });
 

@@ -1,11 +1,10 @@
 package battleship.gui.boats;
 
 import battleship.app.GameState;
-import battleship.app.Player;
 import battleship.boats.Boat;
 import battleship.boats.Orientation;
-import battleship.gui.main.BoatImageComponent;
-import battleship.gui.main.MainView;
+import battleship.gui.main.game.GameView;
+import battleship.gui.main.game.MainFrame;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +39,7 @@ public class BoatSelector extends JPanel {
                 public void mouseClicked(MouseEvent e) {
                     GameState.getPlayer().setSelectedBoat(boat);
                     // Repaints entire frame
-                    MainView.getBoatRotator().repaint();
+                    GameView.getBoatRotator().repaint();
                     repaint();
                 }
             }));
