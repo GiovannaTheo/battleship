@@ -11,13 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by arthurdeschamps on 05.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
 
 public class Player {
 
     private UserGrid userGrid;
     private OpponentGrid opponentGrid;
+
+    // If players is actually in-game
+    public Boolean isPlaying;
+
 
     // Lists of user's boats
     private List<Boat> boats;
@@ -36,6 +40,7 @@ public class Player {
 
         this.userGrid = new UserGrid();
         this.opponentGrid = new OpponentGrid();
+        this.isPlaying = false;
 
         // Add the five available boats to the user's boats
 
@@ -49,26 +54,6 @@ public class Player {
         this.selectedBoat = this.getBoats().get(0);
     }
 
-    public void selectBoat() {
-        // TODO: call this.setSelectedBoat on the mouse selected boat
-    }
-
-    public void placeBoat(Coordinates coord, Orientation orientation) {
-        // TODO: place the boat on the gui
-
-
-        // Delete boat from boats list
-        this.getBoats().remove(selectedBoat);
-
-        // When boat is placed, selectedBoat becomes either the
-        // first boat in the list, or null
-        if (this.getBoats().isEmpty()) {
-            this.setSelectedBoat(null);
-        } else {
-            this.setSelectedBoat(this.getBoats().get(0));
-        }
-
-    }
 
     public void receiveAttack(Coordinates coord) {
         // Checks if there is a boat at these coordinates
@@ -94,6 +79,10 @@ public class Player {
         this.getopponentGrid().markSquare(coord);
     }
 
+
+    public Boolean hasPlacedAllBoats() {
+        return (this.getBoats() == null || this.getBoats().isEmpty());
+    }
 
     /*
         Getters and setters
@@ -122,6 +111,8 @@ public class Player {
     public void setBoats(ArrayList<Boat> boats) {
         this.boats = boats;
     }
+
+    public void addBoat(int position, Boat boat) {this.boats.add(position, boat);}
 
     public Boat getSelectedBoat() {
         return selectedBoat;

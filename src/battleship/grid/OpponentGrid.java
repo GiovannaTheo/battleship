@@ -1,8 +1,9 @@
 package battleship.grid;
 
 /**
- * Created by arthurdeschamps on 05.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
+
 public class OpponentGrid extends Grid {
 
     @Override
@@ -12,7 +13,6 @@ public class OpponentGrid extends Grid {
         Square square = this.getSquareByCoordinate(coord);
         square.hasBeenShot = true;
 
-        // TODO: Ask to user if his opponent has been touched on one of his boats
         Boolean boatTouched;
 
         boatTouched = true; // TODO: ask user

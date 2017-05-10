@@ -1,11 +1,15 @@
 package battleship.boats;
 
+import battleship.app.GameState;
 import battleship.grid.Coordinates;
-import battleship.gui.main.ImageComponent;
+import battleship.gui.boats.BoatImageComponent;
+
+import java.awt.event.MouseAdapter;
 
 /**
- * Created by arthurdeschamps on 05.05.17.
+ * Created by arthurdeschamps and theogiovanna on 05.05.17.
  */
+
 public abstract class Boat {
 
     private int hitpoints;
@@ -78,9 +82,39 @@ public abstract class Boat {
     }
 
     // Renders object as boat image
-    public ImageComponent getVisualForm() {
-        return new ImageComponent(this.getImagePath());
+    public BoatImageComponent getVisualForm(MouseAdapter mouseListener) {
+        return  new BoatImageComponent(this.getImagePath(), this, mouseListener);
     }
+
+    public String getPath(){
+        return this.getImagePath();
+    }
+
+    public Boolean isSelected() {
+        return (GameState.getPlayer().getSelectedBoat() != null && GameState.getPlayer().getSelectedBoat().equals(this));
+    }
+
+    public void rotateRight() {
+        switch (this.getOrientation()) {
+            case UP:
+                this.setOrientation(Orientation.RIGHT);
+                break;
+
+            case DOWN:
+                this.setOrientation(Orientation.LEFT);
+                break;
+
+            case LEFT:
+                this.setOrientation(Orientation.UP);
+                break;
+
+            case RIGHT:
+                this.setOrientation(Orientation.DOWN);
+                break;
+        }
+    }
+
+
 
     /*
     Getters and setters
@@ -114,11 +148,11 @@ public abstract class Boat {
         return length;
     }
 
-    public String getImagePath() {
+    protected String getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    protected void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 }
