@@ -25,7 +25,7 @@ public class GameView extends JPanel {
 
     GameView() {
         // Set layout
-        this.setLayout(new MigLayout("debug","[][grow][]"));
+        this.setLayout(new MigLayout("","[][grow][]"));
 
         // Add components
         this.add(exitButton," growx, w 20%");

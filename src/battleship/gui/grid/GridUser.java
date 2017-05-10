@@ -3,19 +3,19 @@ package battleship.gui.grid;
 import battleship.app.GameState;
 
 import battleship.boats.Boat;
+import battleship.boats.Orientation;
 import battleship.grid.Coordinates;
 
 import battleship.grid.*;
-import battleship.gui.boats.BoatImageComponent;
-import battleship.gui.main.game.GameView;
-import battleship.gui.main.game.MainFrame;
+
+import battleship.gui.boats.*;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 import static battleship.gui.main.game.GameView.*;
 
@@ -29,6 +29,8 @@ public class GridUser extends JPanel {
     protected int rowCount = 10;
     protected java.util.List<Cell> grid;
     protected Point selectedCell; //Selected cell that needs to be filled
+
+    protected int isLosing = 19;
 
     public GridUser() {
 
@@ -65,15 +67,18 @@ public class GridUser extends JPanel {
 
                 }
 
-                //Graphics g = getGraphics();
-                //paintComponent(g); // Updates the panel
-
                 int index = selectedCell.x + (selectedCell.y * columnCount);
                 Cell cell = grid.get(index);
 
                 if (GameState.getPlayer().getSelectedBoat() != null){
-                    addBoat(GameState.getPlayer().getSelectedBoat(), cell);
+                    Graphics g = getGraphics();
+                    addBoat(GameState.getPlayer().getSelectedBoat(), cell, g);
+                }else{
+                    Graphics g = getGraphics();
+                    paintComponent(g); // Updates the panel
                 }
+
+
             }
         };
         addMouseListener(mouseHandlerClick); //Puts the handler defined above in the MouseListener
@@ -121,18 +126,27 @@ public class GridUser extends JPanel {
             Square square = GameState.getPlayer().getuserGrid().getSquareByCoordinate(cell.getCoord());
 
             if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
-                if (square.hasBoat){ //If there's a boat on the square
+                if (square.hasBoat && square.hasBeenShot == false){ //If there's a boat on the square and we haven't marked it
                     //g.fillRect((int)cell.getX(), (int)cell.getY(), cellWidth, cellHeight); //Fill it
                     g.fillOval((int)(cell.getX() + cell.getWidth() / 2.75), (int)(cell.getY() + cell.getHeight() / 4), cellWidth/4, cellWidth/4);
+                    GameState.getPlayer().getuserGrid().markSquare(cell.getCoord()); //Mark square as already shot
+                    isLosing -= 1;
+                    if (isLosing == 0){
+                        if (JOptionPane.showConfirmDialog(null, "You are a loser !", "WARNING",
+                                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                            GameState.abandon(); //Dead
+                        }else{
+                            GameState.abandon(); //Dead
+                        }
+                    }
+                }else{
+                    g.setColor(Color.WHITE);
+                    if (square.hasBoat == false){ //If it hasn't already been shot
+                        g.fillOval((int)(cell.getX() + cell.getWidth() / 2.75), (int)(cell.getY() + cell.getHeight() / 4), cellWidth/4, cellWidth/4);
+                    }
                 }
 
 
-
-                // If user wants to place a boat
-                Boat selectedBoat = GameState.getPlayer().getSelectedBoat();
-                if (selectedBoat != null) {
-                    this.addBoat(selectedBoat, cell);
-                }
             }
         }
 
@@ -185,40 +199,52 @@ public class GridUser extends JPanel {
     }
 
 
-    // Add a boat with head at headCell to the grid
-    private void addBoat(Boat boatToAdd, Cell headCell) {
+    // Add a boat with head at cell to the grid
+    private void addBoat(Boat boatToAdd, Cell cell, Graphics g) {
             try {
-                Logger.getGlobal().info("adding boat");
-                // Get boat image
-                BoatImageComponent boatImage = boatToAdd.getVisualForm(null);
-                boatImage.setLayout(null);
-                // Add boat to mainView
 
-                this.add(boatImage);
-                // Size of the boat
-                boatImage.setSize(new Dimension((int)headCell.getWidth()*boatToAdd.getLength(), (int)headCell.getHeight()/2));
-                // Location
-                boatImage.setLocation((int) headCell.getX(), (int) headCell.getY());
+                Orientation or = boatToAdd.getOrientation();
 
-                // Removes selected boat
-                GameState.getPlayer().getBoats().remove(boatToAdd);
-
-                // When boat is placed, selectedBoat becomes either the
-                // first boat in the list, or null
                 if (GameState.getPlayer().getBoats().isEmpty()) {
                     GameState.getPlayer().setSelectedBoat(null);
                 } else {
-                    GameState.getPlayer().setSelectedBoat(GameState.getPlayer().getBoats().get(0));
+
+                    g.setColor(Color.BLUE);
+                    GameState.getPlayer().getBoats().remove(boatToAdd); //removes current boat
+                    switch (or) {
+                        case UP :
+                            PlaceBoat boatup = new PlaceBoat();
+                            boatup.placeUp(boatToAdd, cell, g);
+                            break;
+                        case DOWN :
+                            PlaceBoat boatdown = new PlaceBoat();
+                            boatdown.placeDown(boatToAdd, cell, g);
+                            break;
+                        case LEFT :
+                            PlaceBoat boatleft = new PlaceBoat();
+                            boatleft.placeLeft(boatToAdd, cell, g);
+                            break;
+                        case RIGHT :
+                            PlaceBoat boatright = new PlaceBoat();
+                            boatright.placeRight(boatToAdd, cell, g);
+                            break;
+                        default:
+                            break;
+                    }
                 }
 
-                // Update views
-                getBoatRotator().repaint();
-                getBoatSelector().repaint();
 
                 // Update views
                 getBoatRotator().repaint();
                 getBoatSelector().repaint();
 
+
+                if (GameState.getPlayer().getBoats().isEmpty() == false) {
+                    GameState.getPlayer().setSelectedBoat(GameState.getPlayer().getBoats().get(0)); //updates next selected boat
+                }
+                // Update views
+                getBoatRotator().repaint();
+                getBoatSelector().repaint();
 
             } catch (NullPointerException e) {
                 e.printStackTrace();

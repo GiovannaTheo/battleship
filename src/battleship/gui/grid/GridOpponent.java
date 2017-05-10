@@ -100,8 +100,6 @@ public class GridOpponent extends JPanel {
             int index = selectedCell.x + (selectedCell.y * columnCount);
             Cell cell = grid.get(index);
 
-            System.out.println("coord x: " + cell.getCoord().getX() + " coord y: " + cell.getCoord().getY());
-
             if (GameState.getPlayer().isPlaying) { //If user pressed "Start" then he is allowed to mark the squares
                 if (JOptionPane.showConfirmDialog(null, "Did you hit one of your opponent's boat?", "WARNING",
                         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {

@@ -94,26 +94,6 @@ public abstract class Boat {
         return (GameState.getPlayer().getSelectedBoat() != null && GameState.getPlayer().getSelectedBoat().equals(this));
     }
 
-    public void rotateLeft() {
-        switch (this.getOrientation()) {
-            case UP:
-                this.setOrientation(Orientation.LEFT);
-                break;
-
-            case DOWN:
-                this.setOrientation(Orientation.RIGHT);
-                break;
-
-            case LEFT:
-                this.setOrientation(Orientation.DOWN);
-                break;
-
-            case RIGHT:
-                this.setOrientation(Orientation.UP);
-                break;
-        }
-    }
-
     public void rotateRight() {
         switch (this.getOrientation()) {
             case UP:
