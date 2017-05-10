@@ -53,11 +53,6 @@ public class Player {
         this.selectedBoat = this.getBoats().get(0);
     }
 
-    public void selectBoat() {
-        // TODO: call this.setSelectedBoat on the mouse selected boat
-    }
-
-
 
     public void receiveAttack(Coordinates coord) {
         // Checks if there is a boat at these coordinates
@@ -111,6 +106,8 @@ public class Player {
     public void setBoats(ArrayList<Boat> boats) {
         this.boats = boats;
     }
+
+    public void addBoat(int position, Boat boat) {this.boats.add(position, boat);}
 
     public Boat getSelectedBoat() {
         return selectedBoat;
