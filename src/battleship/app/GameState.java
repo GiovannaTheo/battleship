@@ -19,24 +19,6 @@ public class GameState {
     }
 
 
-
-    public Boolean getIsUserTurn(){
-        return this.isUserTurn;
-    }
-
-    public void setIsUserTurn(Boolean bool){
-        this.isUserTurn = bool;
-    }
-
-    public int getRound(){
-        return this.round;
-    }
-
-    public void updateRound(){ /* Updates round */
-        this.round += 1;
-    }
-
-
     public static void abandon(){
         System.exit(0); //Quitting game
     }

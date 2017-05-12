@@ -14,10 +14,5 @@ public class UserGrid extends Grid {
         Square square = this.getSquareByCoordinate(coord);
         square.hasBeenShot = true;
 
-        if (square.hasBoat) {
-            // TODO: GUI reflection "been shot" + "has boat"
-        } else if (square.isEmpty) {
-            // TODO: GUI reflection "been shot" + "is empty"
-        }
     }
 }
