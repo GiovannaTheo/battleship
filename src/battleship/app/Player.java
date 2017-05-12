@@ -22,6 +22,7 @@ public class Player {
     // If players is actually in-game
     public Boolean isPlaying;
 
+
     // Lists of user's boats
     private List<Boat> boats;
 
@@ -78,6 +79,10 @@ public class Player {
         this.getopponentGrid().markSquare(coord);
     }
 
+
+    public Boolean hasPlacedAllBoats() {
+        return (this.getBoats() == null || this.getBoats().isEmpty());
+    }
 
     /*
         Getters and setters

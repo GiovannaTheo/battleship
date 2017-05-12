@@ -27,7 +27,7 @@ public class MainView extends JPanel {
         instructionLabelConstraint.alignX("center").spanX();
 
         // Init instructions label
-       instructions = new JLabel("Select and place your boats");
+       instructions = new JLabel("Select a boat, rotate it at will and place your it on the downer grid.");
 
         // Add components to our MainView
         this.add(instructions, instructionLabelConstraint);
